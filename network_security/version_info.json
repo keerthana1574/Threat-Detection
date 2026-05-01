@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "trained_date": "2025-01-09",
+  "model_type": "NSL-KDD Network Intrusion Detection",
+  "dataset": "NSL-KDD",
+  "accuracy": 0.95,
+  "models": [
+    "Random Forest",
+    "Logistic Regression",
+    "SVM",
+    "Isolation Forest",
+    "Neural Network"
+  ],
+  "features": 41,
+  "attack_types": ["normal", "dos", "probe", "r2l", "u2r"],
+  "notes": "Trained on NSL-KDD dataset with binary classification"
+}
