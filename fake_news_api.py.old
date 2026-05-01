@@ -1,0 +1,159 @@
+from flask import Blueprint, request, jsonify
+from backend.modules.fake_news.detector import FactFocusedNewsDetector, NewsAPIMonitor
+import os
+
+fake_news_bp = Blueprint('fake_news', __name__)
+
+# Initialize detector
+model_dir = 'backend/models/fake_news'
+detector = FactFocusedNewsDetector(model_dir)
+
+# Initialize NewsAPI monitor (get API key from environment)
+NEWS_API_KEY = os.getenv('NEWS_API_KEY', 'your_newsapi_key_here')
+news_monitor = NewsAPIMonitor(NEWS_API_KEY, detector)
+
+@fake_news_bp.route('/predict', methods=['POST'])
+def predict_fake_news():
+    """Predict fake news for given text"""
+    try:
+        data = request.get_json()
+        text = data.get('text', '')
+        
+        if not text:
+            return jsonify({'error': 'No text provided'}), 400
+        
+        result = detector.predict_single(text)
+        
+        # Check for errors in result
+        if 'error' in result:
+            return jsonify(result), 400
+        
+        return jsonify(result)
+        
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@fake_news_bp.route('/predict/batch', methods=['POST'])
+def predict_batch_fake_news():
+    """Predict fake news for multiple texts"""
+    try:
+        data = request.get_json()
+        texts = data.get('texts', [])
+        
+        if not texts:
+            return jsonify({'error': 'No texts provided'}), 400
+        
+        results = [detector.predict_single(text) for text in texts]
+        return jsonify({'results': results})
+        
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@fake_news_bp.route('/news/headlines', methods=['GET'])
+def get_analyzed_headlines():
+    """Get latest headlines analyzed for fake news"""
+    try:
+        country = request.args.get('country', 'us')
+        category = request.args.get('category')  # business, entertainment, health, science, sports, technology
+        page_size = int(request.args.get('page_size', 20))
+        
+        results = news_monitor.get_analyzed_headlines(country, category, page_size)
+        
+        # Calculate statistics
+        total = len(results)
+        fake_count = sum(1 for r in results if r['prediction'])
+        
+        return jsonify({
+            'total_articles': total,
+            'fake_news_detected': fake_count,
+            'fake_news_percentage': (fake_count / total * 100) if total > 0 else 0,
+            'articles': results
+        })
+        
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@fake_news_bp.route('/news/search', methods=['GET'])
+def search_analyzed_news():
+    """Search news and analyze for fake news"""
+    try:
+        query = request.args.get('query', '')
+        
+        if not query:
+            return jsonify({'error': 'No search query provided'}), 400
+        
+        language = request.args.get('language', 'en')
+        page_size = int(request.args.get('page_size', 20))
+        
+        results = news_monitor.get_analyzed_search(query, language, page_size)
+        
+        # Calculate statistics
+        total = len(results)
+        fake_count = sum(1 for r in results if r['prediction'])
+        
+        return jsonify({
+            'query': query,
+            'total_articles': total,
+            'fake_news_detected': fake_count,
+            'fake_news_percentage': (fake_count / total * 100) if total > 0 else 0,
+            'articles': results
+        })
+        
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@fake_news_bp.route('/news/trending', methods=['GET'])
+def get_trending_fake_news():
+    """Get trending topics analyzed for fake news"""
+    try:
+        # Get headlines from multiple categories
+        categories = ['general', 'technology', 'health', 'science']
+        all_results = []
+        
+        for category in categories:
+            results = news_monitor.get_analyzed_headlines('us', category, 5)
+            all_results.extend(results)
+        
+        # Sort by fake news probability (highest first)
+        all_results.sort(key=lambda x: x['ensemble_probability'], reverse=True)
+        
+        # Get top suspicious articles
+        suspicious_articles = [r for r in all_results if r['prediction']][:10]
+        
+        return jsonify({
+            'total_analyzed': len(all_results),
+            'suspicious_articles': len(suspicious_articles),
+            'top_suspicious': suspicious_articles
+        })
+        
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@fake_news_bp.route('/health', methods=['GET'])
+def health_check():
+    """Health check endpoint"""
+    try:
+        # Check if models are loaded
+        models_loaded = detector.tfidf_vectorizer is not None
+        
+        # Count loaded models
+        model_count = sum([
+            detector.rf_model is not None,
+            detector.lr_model is not None,
+            detector.nb_model is not None,
+            detector.gb_model is not None,
+            detector.xgb_model is not None,
+            detector.hybrid_model is not None
+        ])
+        
+        return jsonify({
+            'status': 'healthy' if models_loaded else 'unhealthy',
+            'models_loaded': model_count,
+            'tfidf_loaded': detector.tfidf_vectorizer is not None,
+            'news_api_configured': NEWS_API_KEY != 'your_newsapi_key_here'
+        })
+    except Exception as e:
+        return jsonify({
+            'status': 'unhealthy',
+            'error': str(e)
+        }), 500

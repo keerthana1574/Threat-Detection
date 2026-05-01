@@ -1,0 +1,25 @@
+2025-09-17 19:41:23,436 - INFO - Starting OPTIMIZED Cyberbullying Detection Model Training
+2025-09-17 19:41:23,436 - INFO - ============================================================
+2025-09-17 19:41:25,176 - INFO - Setting up NLTK data...
+2025-09-17 19:41:25,178 - INFO - [OK] NLTK punkt already available
+2025-09-17 19:41:25,178 - INFO - [OK] NLTK stopwords already available
+2025-09-17 19:41:25,181 - INFO - Downloading NLTK data: wordnet
+2025-09-17 19:41:28,278 - INFO - [OK] Downloaded wordnet
+2025-09-17 19:41:28,280 - INFO - Downloading NLTK data: omw-1.4
+2025-09-17 19:41:28,346 - INFO - [OK] Downloaded omw-1.4
+2025-09-17 19:41:28,351 - INFO - NLTK data setup completed
+2025-09-17 19:41:28,358 - INFO - [OK] Found dataset: datasets/cyberbullying/cyberbullying_tweets.csv (6.8 MB)
+2025-09-17 19:41:28,364 - INFO - [OK] Found dataset: datasets/cyberbullying/final_hateXplain.csv (3.6 MB)
+2025-09-17 19:41:28,370 - INFO - [OK] Found dataset: datasets/cyberbullying/aggression_parsed_dataset.csv (48.1 MB)
+2025-09-17 19:41:28,376 - INFO - [OK] Found dataset: datasets/cyberbullying/attack_parsed_dataset.csv (48.0 MB)
+2025-09-17 19:41:28,382 - INFO - [OK] Found dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv (63.6 MB)
+2025-09-17 19:41:28,388 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_parsed_dataset.csv (2.4 MB)
+2025-09-17 19:41:28,395 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_racism_parsed_dataset.csv (1.9 MB)
+2025-09-17 19:41:28,402 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_sexism_parsed_dataset.csv (2.1 MB)
+2025-09-17 19:41:28,407 - INFO - [OK] Found dataset: datasets/cyberbullying/youtube_parsed_dataset.csv (3.7 MB)
+2025-09-17 19:41:28,412 - INFO - [OK] Found dataset: datasets/cyberbullying/kaggle_parsed_dataset.csv (1.7 MB)
+2025-09-17 19:41:28,412 - INFO - Total dataset size: 181.9 MB
+2025-09-17 19:41:28,412 - INFO - Found 10 usable datasets
+2025-09-17 19:41:28,414 - INFO - Total dataset size: 181.9 MB
+2025-09-17 19:41:28,417 - ERROR - Could not import OptimizedCyberbullyingDetector
+2025-09-17 19:41:28,418 - ERROR - Make sure the detector_optimized.py file is in the correct location

@@ -1,0 +1,609 @@
+2025-09-17 15:11:23,475 - INFO - Starting Enhanced Cyberbullying Detection Model Training
+2025-09-17 15:11:23,476 - INFO - ============================================================
+2025-09-17 15:11:29,265 - INFO - Setting up NLTK data...
+2025-09-17 15:11:29,266 - INFO - [OK] NLTK punkt already available
+2025-09-17 15:11:29,267 - INFO - [OK] NLTK stopwords already available
+2025-09-17 15:11:29,270 - INFO - Downloading NLTK data: wordnet
+2025-09-17 15:11:29,722 - INFO - [OK] Downloaded wordnet
+2025-09-17 15:11:29,724 - INFO - Downloading NLTK data: omw-1.4
+2025-09-17 15:11:29,792 - INFO - [OK] Downloaded omw-1.4
+2025-09-17 15:11:29,795 - INFO - NLTK data setup completed
+2025-09-17 15:11:29,803 - INFO - [OK] Found dataset: datasets/cyberbullying/cyberbullying_tweets.csv (6.8 MB)
+2025-09-17 15:11:29,811 - INFO - [OK] Found dataset: datasets/cyberbullying/final_hateXplain.csv (3.6 MB)
+2025-09-17 15:11:29,818 - INFO - [OK] Found dataset: datasets/cyberbullying/aggression_parsed_dataset.csv (48.1 MB)
+2025-09-17 15:11:29,823 - INFO - [OK] Found dataset: datasets/cyberbullying/attack_parsed_dataset.csv (48.0 MB)
+2025-09-17 15:11:29,829 - INFO - [OK] Found dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv (63.6 MB)
+2025-09-17 15:11:29,836 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_parsed_dataset.csv (2.4 MB)
+2025-09-17 15:11:29,842 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_racism_parsed_dataset.csv (1.9 MB)
+2025-09-17 15:11:29,849 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_sexism_parsed_dataset.csv (2.1 MB)
+2025-09-17 15:11:29,854 - INFO - [OK] Found dataset: datasets/cyberbullying/youtube_parsed_dataset.csv (3.7 MB)
+2025-09-17 15:11:29,859 - INFO - [OK] Found dataset: datasets/cyberbullying/kaggle_parsed_dataset.csv (1.7 MB)
+2025-09-17 15:11:29,859 - INFO - Total dataset size: 181.9 MB
+2025-09-17 15:11:29,859 - INFO - Found 10 usable datasets
+2025-09-17 15:11:29,860 - INFO - Total dataset size: 181.9 MB
+2025-09-17 15:11:41,221 - WARNING - From C:\Users\yesha\Desktop\threat_det\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+2025-09-17 15:11:42,154 - INFO - Transformer model loaded successfully
+2025-09-17 15:11:42,154 - INFO - Loading and preprocessing datasets with enhanced features...
+2025-09-17 15:11:42,154 - INFO - Loading dataset: datasets/cyberbullying/cyberbullying_tweets.csv
+2025-09-17 15:11:42,250 - INFO - Dataset cyberbullying_tweets.csv columns: ['tweet_text', 'cyberbullying_type']
+2025-09-17 15:11:42,251 - INFO - Dataset shape: (47692, 2)
+2025-09-17 15:11:42,275 - INFO - Processed cyberbullying_tweets.csv: 47692 samples, labels: {1: 39747, 0: 7945}
+2025-09-17 15:11:42,275 - INFO - Loaded 47692 samples from datasets/cyberbullying/cyberbullying_tweets.csv
+2025-09-17 15:11:42,275 - INFO - Loading dataset: datasets/cyberbullying/final_hateXplain.csv
+2025-09-17 15:11:42,331 - INFO - Dataset final_hatexplain.csv columns: ['comment', 'label', 'Race', 'Religion', 'Gender', 'Sexual Orientation', 'Miscellaneous']
+2025-09-17 15:11:42,332 - INFO - Dataset shape: (20109, 7)
+2025-09-17 15:11:42,335 - INFO - Generic fallback - unique labels: ['normal' 'offensive' 'hatespeech']
+2025-09-17 15:11:42,361 - INFO - Processed final_hatexplain.csv: 20109 samples, labels: {1: 12291, 0: 7818}
+2025-09-17 15:11:42,361 - INFO - Loaded 20109 samples from datasets/cyberbullying/final_hateXplain.csv
+2025-09-17 15:11:42,361 - INFO - Loading dataset: datasets/cyberbullying/aggression_parsed_dataset.csv
+2025-09-17 15:11:43,016 - INFO - Dataset aggression_parsed_dataset.csv columns: ['index', 'Text', 'ed_label_0', 'ed_label_1', 'oh_label']
+2025-09-17 15:11:43,017 - INFO - Dataset shape: (115864, 5)
+2025-09-17 15:11:43,074 - INFO - Processed aggression_parsed_dataset.csv: 115864 samples, labels: {1: 112544, 0: 3320}
+2025-09-17 15:11:43,075 - INFO - Loaded 115864 samples from datasets/cyberbullying/aggression_parsed_dataset.csv
+2025-09-17 15:11:43,075 - INFO - Loading dataset: datasets/cyberbullying/attack_parsed_dataset.csv
+2025-09-17 15:11:43,722 - INFO - Dataset attack_parsed_dataset.csv columns: ['index', 'Text', 'ed_label_0', 'ed_label_1', 'oh_label']
+2025-09-17 15:11:43,723 - INFO - Dataset shape: (115864, 5)
+2025-09-17 15:11:43,769 - INFO - Processed attack_parsed_dataset.csv: 115864 samples, labels: {1: 112808, 0: 3056}
+2025-09-17 15:11:43,774 - INFO - Loaded 115864 samples from datasets/cyberbullying/attack_parsed_dataset.csv
+2025-09-17 15:11:43,775 - INFO - Loading dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv
+2025-09-17 15:11:44,634 - INFO - Dataset toxicity_parsed_dataset.csv columns: ['index', 'Text', 'ed_label_0', 'ed_label_1', 'oh_label']
+2025-09-17 15:11:44,636 - INFO - Dataset shape: (159686, 5)
+2025-09-17 15:11:44,726 - INFO - Processed toxicity_parsed_dataset.csv: 159686 samples, labels: {1: 155215, 0: 4471}
+2025-09-17 15:11:44,727 - INFO - Loaded 159686 samples from datasets/cyberbullying/toxicity_parsed_dataset.csv
+2025-09-17 15:11:44,727 - INFO - Loading dataset: datasets/cyberbullying/twitter_parsed_dataset.csv
+2025-09-17 15:11:44,778 - INFO - Dataset twitter_parsed_dataset.csv columns: ['index', 'id', 'Text', 'Annotation', 'oh_label']
+2025-09-17 15:11:44,779 - INFO - Dataset shape: (16851, 5)
+2025-09-17 15:11:44,781 - INFO - Unique values in Annotation: ['none' 'sexism' 'racism' nan]
+2025-09-17 15:11:44,820 - INFO - Processed twitter_parsed_dataset.csv: 16850 samples, labels: {0: 11501, 1: 5349}
+2025-09-17 15:11:44,820 - INFO - Loaded 16850 samples from datasets/cyberbullying/twitter_parsed_dataset.csv
+2025-09-17 15:11:44,821 - INFO - Loading dataset: datasets/cyberbullying/twitter_racism_parsed_dataset.csv
+2025-09-17 15:11:44,860 - INFO - Dataset twitter_racism_parsed_dataset.csv columns: ['index', 'id', 'Text', 'Annotation', 'oh_label']
+2025-09-17 15:11:44,861 - INFO - Dataset shape: (13471, 5)
+2025-09-17 15:11:44,863 - INFO - Unique values in Annotation: ['racism' 'none']
+2025-09-17 15:11:44,889 - INFO - Processed twitter_racism_parsed_dataset.csv: 13471 samples, labels: {0: 11501, 1: 1970}
+2025-09-17 15:11:44,889 - INFO - Loaded 13471 samples from datasets/cyberbullying/twitter_racism_parsed_dataset.csv
+2025-09-17 15:11:44,890 - INFO - Loading dataset: datasets/cyberbullying/twitter_sexism_parsed_dataset.csv
+2025-09-17 15:11:44,932 - INFO - Dataset twitter_sexism_parsed_dataset.csv columns: ['index', 'id', 'Text', 'Annotation', 'oh_label']
+2025-09-17 15:11:44,933 - INFO - Dataset shape: (14881, 5)
+2025-09-17 15:11:44,934 - INFO - Unique values in Annotation: ['sexism' 'none' nan]
+2025-09-17 15:11:44,963 - INFO - Processed twitter_sexism_parsed_dataset.csv: 14880 samples, labels: {0: 11501, 1: 3379}
+2025-09-17 15:11:44,964 - INFO - Loaded 14880 samples from datasets/cyberbullying/twitter_sexism_parsed_dataset.csv
+2025-09-17 15:11:44,964 - INFO - Loading dataset: datasets/cyberbullying/youtube_parsed_dataset.csv
+2025-09-17 15:11:45,010 - INFO - Dataset youtube_parsed_dataset.csv columns: ['index', 'UserIndex', 'Text', 'Number of Comments', 'Number of Subscribers', 'Membership Duration', 'Number of Uploads', 'Profanity in UserID', 'Age', 'oh_label']
+2025-09-17 15:11:45,010 - INFO - Dataset shape: (3464, 10)
+2025-09-17 15:11:45,015 - INFO - Processed youtube_parsed_dataset.csv: 3464 samples, labels: {0: 3047, 1: 417}
+2025-09-17 15:11:45,015 - INFO - Loaded 3464 samples from datasets/cyberbullying/youtube_parsed_dataset.csv
+2025-09-17 15:11:45,015 - INFO - Loading dataset: datasets/cyberbullying/kaggle_parsed_dataset.csv
+2025-09-17 15:11:45,041 - INFO - Dataset kaggle_parsed_dataset.csv columns: ['index', 'oh_label', 'Date', 'Text']
+2025-09-17 15:11:45,041 - INFO - Dataset shape: (8799, 4)
+2025-09-17 15:11:45,048 - INFO - Processed kaggle_parsed_dataset.csv: 8799 samples, labels: {0: 5993, 1: 2806}
+2025-09-17 15:11:45,048 - INFO - Loaded 8799 samples from datasets/cyberbullying/kaggle_parsed_dataset.csv
+2025-09-17 15:12:27,053 - INFO - Original distribution: {1: 446526, 0: 70153}
+2025-09-17 15:12:27,123 - INFO - Enhanced balanced dataset from 516679 to 150000 samples
+2025-09-17 15:12:27,125 - INFO - New distribution: {0: 75000, 1: 75000}
+2025-09-17 15:12:27,157 - INFO - Final dataset size: 150000
+2025-09-17 15:12:27,158 - INFO - Label distribution: [75000 75000]
+2025-09-17 15:12:27,181 - INFO - Enhanced Dataset Statistics:
+2025-09-17 15:12:27,182 - INFO -   Total samples: 150000
+2025-09-17 15:12:27,196 - INFO -   Positive samples (cyberbullying): 75000
+2025-09-17 15:12:27,208 - INFO -   Negative samples (not cyberbullying): 75000
+2025-09-17 15:12:27,219 - INFO -   Class balance ratio: 0.500
+2025-09-17 15:12:27,242 - INFO - Dataset has good balance (minority class: 50.0%)
+2025-09-17 15:12:27,242 - INFO - Training enhanced model with ensemble methods...
+2025-09-17 15:12:27,244 - INFO - This includes hyperparameter tuning and may take 10-30 minutes...
+2025-09-17 15:12:27,244 - INFO - Components: Logistic Regression + Random Forest + SVM + Dynamic Thresholds
+2025-09-17 15:12:27,311 - INFO - Vectorizing text data with enhanced features...
+2025-09-17 15:12:48,404 - INFO - Tuning Logistic Regression...
+2025-09-17 15:13:06,888 - INFO - Best LR params: {'C': 2.0, 'penalty': 'l2', 'solver': 'lbfgs'}
+2025-09-17 15:13:06,889 - INFO - Tuning Random Forest...
+2025-09-17 15:14:10,952 - INFO - Best RF params: {'max_depth': 20, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 200}
+2025-09-17 15:14:10,952 - INFO - Tuning SVM...
+2025-09-17 15:14:10,953 - ERROR - Enhanced training failed: sparse array length is ambiguous; use getnnz() or shape[0]
+2025-09-17 15:14:10,988 - ERROR - Traceback (most recent call last):
+  File "C:\Users\yesha\Desktop\threat_det\backend\modules\cyberbullying\train.py", line 231, in train_enhanced_cyberbullying_model
+    results = detector.enhanced_train_model(X, y)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yesha\Desktop\threat_det\backend\modules\cyberbullying\detector.py", line 529, in enhanced_train_model
+    if len(X_train_vec) > 10000:
+       ^^^^^^^^^^^^^^^^
+  File "C:\Users\yesha\Desktop\threat_det\venv\Lib\site-packages\scipy\sparse\_base.py", line 449, in __len__
+    raise TypeError("sparse array length is ambiguous; use getnnz()"
+TypeError: sparse array length is ambiguous; use getnnz() or shape[0]
+
+2025-09-17 15:15:28,101 - INFO - Starting Enhanced Cyberbullying Detection Model Training
+2025-09-17 15:15:28,101 - INFO - ============================================================
+2025-09-17 15:15:35,402 - INFO - Setting up NLTK data...
+2025-09-17 15:15:35,403 - INFO - [OK] NLTK punkt already available
+2025-09-17 15:15:35,405 - INFO - [OK] NLTK stopwords already available
+2025-09-17 15:15:35,411 - INFO - Downloading NLTK data: wordnet
+2025-09-17 15:15:35,626 - INFO - [OK] Downloaded wordnet
+2025-09-17 15:15:35,631 - INFO - Downloading NLTK data: omw-1.4
+2025-09-17 15:15:35,706 - INFO - [OK] Downloaded omw-1.4
+2025-09-17 15:15:35,707 - INFO - NLTK data setup completed
+2025-09-17 15:15:35,716 - INFO - [OK] Found dataset: datasets/cyberbullying/cyberbullying_tweets.csv (6.8 MB)
+2025-09-17 15:15:35,723 - INFO - [OK] Found dataset: datasets/cyberbullying/final_hateXplain.csv (3.6 MB)
+2025-09-17 15:15:35,731 - INFO - [OK] Found dataset: datasets/cyberbullying/aggression_parsed_dataset.csv (48.1 MB)
+2025-09-17 15:15:35,737 - INFO - [OK] Found dataset: datasets/cyberbullying/attack_parsed_dataset.csv (48.0 MB)
+2025-09-17 15:15:35,743 - INFO - [OK] Found dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv (63.6 MB)
+2025-09-17 15:15:35,750 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_parsed_dataset.csv (2.4 MB)
+2025-09-17 15:15:35,757 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_racism_parsed_dataset.csv (1.9 MB)
+2025-09-17 15:15:35,764 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_sexism_parsed_dataset.csv (2.1 MB)
+2025-09-17 15:15:35,769 - INFO - [OK] Found dataset: datasets/cyberbullying/youtube_parsed_dataset.csv (3.7 MB)
+2025-09-17 15:15:35,775 - INFO - [OK] Found dataset: datasets/cyberbullying/kaggle_parsed_dataset.csv (1.7 MB)
+2025-09-17 15:15:35,775 - INFO - Total dataset size: 181.9 MB
+2025-09-17 15:15:35,775 - INFO - Found 10 usable datasets
+2025-09-17 15:15:35,776 - INFO - Total dataset size: 181.9 MB
+2025-09-17 15:15:48,724 - WARNING - From C:\Users\yesha\Desktop\threat_det\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+2025-09-17 15:15:49,852 - INFO - Transformer model loaded successfully
+2025-09-17 15:15:49,852 - INFO - Loading and preprocessing datasets with enhanced features...
+2025-09-17 15:15:49,852 - INFO - Loading dataset: datasets/cyberbullying/cyberbullying_tweets.csv
+2025-09-17 15:15:49,942 - INFO - Dataset cyberbullying_tweets.csv columns: ['tweet_text', 'cyberbullying_type']
+2025-09-17 15:15:49,942 - INFO - Dataset shape: (47692, 2)
+2025-09-17 15:15:49,965 - INFO - Processed cyberbullying_tweets.csv: 47692 samples, labels: {1: 39747, 0: 7945}
+2025-09-17 15:15:49,966 - INFO - Loaded 47692 samples from datasets/cyberbullying/cyberbullying_tweets.csv
+2025-09-17 15:15:49,967 - INFO - Loading dataset: datasets/cyberbullying/final_hateXplain.csv
+2025-09-17 15:15:50,024 - INFO - Dataset final_hatexplain.csv columns: ['comment', 'label', 'Race', 'Religion', 'Gender', 'Sexual Orientation', 'Miscellaneous']
+2025-09-17 15:15:50,024 - INFO - Dataset shape: (20109, 7)
+2025-09-17 15:15:50,027 - INFO - Generic fallback - unique labels: ['normal' 'offensive' 'hatespeech']
+2025-09-17 15:15:50,054 - INFO - Processed final_hatexplain.csv: 20109 samples, labels: {1: 12291, 0: 7818}
+2025-09-17 15:15:50,055 - INFO - Loaded 20109 samples from datasets/cyberbullying/final_hateXplain.csv
+2025-09-17 15:15:50,055 - INFO - Loading dataset: datasets/cyberbullying/aggression_parsed_dataset.csv
+2025-09-17 15:15:50,696 - INFO - Dataset aggression_parsed_dataset.csv columns: ['index', 'Text', 'ed_label_0', 'ed_label_1', 'oh_label']
+2025-09-17 15:15:50,696 - INFO - Dataset shape: (115864, 5)
+2025-09-17 15:15:50,758 - INFO - Processed aggression_parsed_dataset.csv: 115864 samples, labels: {1: 112544, 0: 3320}
+2025-09-17 15:15:50,759 - INFO - Loaded 115864 samples from datasets/cyberbullying/aggression_parsed_dataset.csv
+2025-09-17 15:15:50,759 - INFO - Loading dataset: datasets/cyberbullying/attack_parsed_dataset.csv
+2025-09-17 15:15:51,396 - INFO - Dataset attack_parsed_dataset.csv columns: ['index', 'Text', 'ed_label_0', 'ed_label_1', 'oh_label']
+2025-09-17 15:15:51,396 - INFO - Dataset shape: (115864, 5)
+2025-09-17 15:15:51,448 - INFO - Processed attack_parsed_dataset.csv: 115864 samples, labels: {1: 112808, 0: 3056}
+2025-09-17 15:15:51,449 - INFO - Loaded 115864 samples from datasets/cyberbullying/attack_parsed_dataset.csv
+2025-09-17 15:15:51,449 - INFO - Loading dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv
+2025-09-17 15:15:52,288 - INFO - Dataset toxicity_parsed_dataset.csv columns: ['index', 'Text', 'ed_label_0', 'ed_label_1', 'oh_label']
+2025-09-17 15:15:52,288 - INFO - Dataset shape: (159686, 5)
+2025-09-17 15:15:52,378 - INFO - Processed toxicity_parsed_dataset.csv: 159686 samples, labels: {1: 155215, 0: 4471}
+2025-09-17 15:15:52,378 - INFO - Loaded 159686 samples from datasets/cyberbullying/toxicity_parsed_dataset.csv
+2025-09-17 15:15:52,379 - INFO - Loading dataset: datasets/cyberbullying/twitter_parsed_dataset.csv
+2025-09-17 15:15:52,431 - INFO - Dataset twitter_parsed_dataset.csv columns: ['index', 'id', 'Text', 'Annotation', 'oh_label']
+2025-09-17 15:15:52,431 - INFO - Dataset shape: (16851, 5)
+2025-09-17 15:15:52,433 - INFO - Unique values in Annotation: ['none' 'sexism' 'racism' nan]
+2025-09-17 15:15:52,468 - INFO - Processed twitter_parsed_dataset.csv: 16850 samples, labels: {0: 11501, 1: 5349}
+2025-09-17 15:15:52,468 - INFO - Loaded 16850 samples from datasets/cyberbullying/twitter_parsed_dataset.csv
+2025-09-17 15:15:52,469 - INFO - Loading dataset: datasets/cyberbullying/twitter_racism_parsed_dataset.csv
+2025-09-17 15:15:52,507 - INFO - Dataset twitter_racism_parsed_dataset.csv columns: ['index', 'id', 'Text', 'Annotation', 'oh_label']
+2025-09-17 15:15:52,508 - INFO - Dataset shape: (13471, 5)
+2025-09-17 15:15:52,510 - INFO - Unique values in Annotation: ['racism' 'none']
+2025-09-17 15:15:52,538 - INFO - Processed twitter_racism_parsed_dataset.csv: 13471 samples, labels: {0: 11501, 1: 1970}
+2025-09-17 15:15:52,538 - INFO - Loaded 13471 samples from datasets/cyberbullying/twitter_racism_parsed_dataset.csv
+2025-09-17 15:15:52,539 - INFO - Loading dataset: datasets/cyberbullying/twitter_sexism_parsed_dataset.csv
+2025-09-17 15:15:52,583 - INFO - Dataset twitter_sexism_parsed_dataset.csv columns: ['index', 'id', 'Text', 'Annotation', 'oh_label']
+2025-09-17 15:15:52,583 - INFO - Dataset shape: (14881, 5)
+2025-09-17 15:15:52,585 - INFO - Unique values in Annotation: ['sexism' 'none' nan]
+2025-09-17 15:15:52,615 - INFO - Processed twitter_sexism_parsed_dataset.csv: 14880 samples, labels: {0: 11501, 1: 3379}
+2025-09-17 15:15:52,615 - INFO - Loaded 14880 samples from datasets/cyberbullying/twitter_sexism_parsed_dataset.csv
+2025-09-17 15:15:52,615 - INFO - Loading dataset: datasets/cyberbullying/youtube_parsed_dataset.csv
+2025-09-17 15:15:52,665 - INFO - Dataset youtube_parsed_dataset.csv columns: ['index', 'UserIndex', 'Text', 'Number of Comments', 'Number of Subscribers', 'Membership Duration', 'Number of Uploads', 'Profanity in UserID', 'Age', 'oh_label']
+2025-09-17 15:15:52,665 - INFO - Dataset shape: (3464, 10)
+2025-09-17 15:15:52,670 - INFO - Processed youtube_parsed_dataset.csv: 3464 samples, labels: {0: 3047, 1: 417}
+2025-09-17 15:15:52,671 - INFO - Loaded 3464 samples from datasets/cyberbullying/youtube_parsed_dataset.csv
+2025-09-17 15:15:52,671 - INFO - Loading dataset: datasets/cyberbullying/kaggle_parsed_dataset.csv
+2025-09-17 15:15:52,700 - INFO - Dataset kaggle_parsed_dataset.csv columns: ['index', 'oh_label', 'Date', 'Text']
+2025-09-17 15:15:52,701 - INFO - Dataset shape: (8799, 4)
+2025-09-17 15:15:52,707 - INFO - Processed kaggle_parsed_dataset.csv: 8799 samples, labels: {0: 5993, 1: 2806}
+2025-09-17 15:15:52,707 - INFO - Loaded 8799 samples from datasets/cyberbullying/kaggle_parsed_dataset.csv
+2025-09-17 15:16:35,489 - INFO - Original distribution: {1: 446526, 0: 70153}
+2025-09-17 15:16:35,552 - INFO - Enhanced balanced dataset from 516679 to 150000 samples
+2025-09-17 15:16:35,554 - INFO - New distribution: {0: 75000, 1: 75000}
+2025-09-17 15:16:35,582 - INFO - Final dataset size: 150000
+2025-09-17 15:16:35,583 - INFO - Label distribution: [75000 75000]
+2025-09-17 15:16:35,609 - INFO - Enhanced Dataset Statistics:
+2025-09-17 15:16:35,610 - INFO -   Total samples: 150000
+2025-09-17 15:16:35,623 - INFO -   Positive samples (cyberbullying): 75000
+2025-09-17 15:16:35,639 - INFO -   Negative samples (not cyberbullying): 75000
+2025-09-17 15:16:35,654 - INFO -   Class balance ratio: 0.500
+2025-09-17 15:16:35,683 - INFO - Dataset has good balance (minority class: 50.0%)
+2025-09-17 15:16:35,684 - INFO - Training enhanced model with ensemble methods...
+2025-09-17 15:16:35,684 - INFO - This includes hyperparameter tuning and may take 10-30 minutes...
+2025-09-17 15:16:35,685 - INFO - Components: Logistic Regression + Random Forest + SVM + Dynamic Thresholds
+2025-09-17 15:16:35,754 - INFO - Vectorizing text data with enhanced features...
+2025-09-17 15:16:55,574 - INFO - Tuning Logistic Regression...
+2025-09-17 15:17:11,860 - INFO - Best LR params: {'C': 2.0, 'penalty': 'l2', 'solver': 'lbfgs'}
+2025-09-17 15:17:11,861 - INFO - Tuning Random Forest...
+2025-09-17 15:18:16,303 - INFO - Best RF params: {'max_depth': 20, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 200}
+2025-09-17 15:18:16,303 - INFO - Tuning SVM...
+2025-09-17 15:18:16,304 - ERROR - Enhanced training failed: sparse array length is ambiguous; use getnnz() or shape[0]
+2025-09-17 15:18:16,308 - ERROR - Traceback (most recent call last):
+  File "C:\Users\yesha\Desktop\threat_det\backend\modules\cyberbullying\train.py", line 231, in train_enhanced_cyberbullying_model
+    results = detector.enhanced_train_model(X, y)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yesha\Desktop\threat_det\backend\modules\cyberbullying\detector.py", line 529, in enhanced_train_model
+    if len(X_train_vec) > 10000:
+       ^^^^^^^^^^^^^^^^
+  File "C:\Users\yesha\Desktop\threat_det\venv\Lib\site-packages\scipy\sparse\_base.py", line 449, in __len__
+    raise TypeError("sparse array length is ambiguous; use getnnz()"
+TypeError: sparse array length is ambiguous; use getnnz() or shape[0]
+
+2025-09-17 15:33:48,455 - INFO - Starting Enhanced Cyberbullying Detection Model Training
+2025-09-17 15:33:48,456 - INFO - ============================================================
+2025-09-17 15:33:55,487 - INFO - Setting up NLTK data...
+2025-09-17 15:33:55,489 - INFO - [OK] NLTK punkt already available
+2025-09-17 15:33:55,489 - INFO - [OK] NLTK stopwords already available
+2025-09-17 15:33:55,493 - INFO - Downloading NLTK data: wordnet
+2025-09-17 15:33:55,780 - INFO - [OK] Downloaded wordnet
+2025-09-17 15:33:55,784 - INFO - Downloading NLTK data: omw-1.4
+2025-09-17 15:33:55,855 - INFO - [OK] Downloaded omw-1.4
+2025-09-17 15:33:55,856 - INFO - NLTK data setup completed
+2025-09-17 15:33:55,863 - INFO - [OK] Found dataset: datasets/cyberbullying/cyberbullying_tweets.csv (6.8 MB)
+2025-09-17 15:33:55,870 - INFO - [OK] Found dataset: datasets/cyberbullying/final_hateXplain.csv (3.6 MB)
+2025-09-17 15:33:55,877 - INFO - [OK] Found dataset: datasets/cyberbullying/aggression_parsed_dataset.csv (48.1 MB)
+2025-09-17 15:33:55,883 - INFO - [OK] Found dataset: datasets/cyberbullying/attack_parsed_dataset.csv (48.0 MB)
+2025-09-17 15:33:55,890 - INFO - [OK] Found dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv (63.6 MB)
+2025-09-17 15:33:55,896 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_parsed_dataset.csv (2.4 MB)
+2025-09-17 15:33:55,904 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_racism_parsed_dataset.csv (1.9 MB)
+2025-09-17 15:33:55,910 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_sexism_parsed_dataset.csv (2.1 MB)
+2025-09-17 15:33:55,916 - INFO - [OK] Found dataset: datasets/cyberbullying/youtube_parsed_dataset.csv (3.7 MB)
+2025-09-17 15:33:55,923 - INFO - [OK] Found dataset: datasets/cyberbullying/kaggle_parsed_dataset.csv (1.7 MB)
+2025-09-17 15:33:55,923 - INFO - Total dataset size: 181.9 MB
+2025-09-17 15:33:55,924 - INFO - Found 10 usable datasets
+2025-09-17 15:33:55,924 - INFO - Total dataset size: 181.9 MB
+2025-09-17 15:34:08,216 - WARNING - From C:\Users\yesha\Desktop\threat_det\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+2025-09-17 15:34:09,334 - INFO - Transformer model loaded successfully
+2025-09-17 15:34:09,334 - INFO - Loading and preprocessing datasets with enhanced features...
+2025-09-17 15:34:09,334 - INFO - Loading dataset: datasets/cyberbullying/cyberbullying_tweets.csv
+2025-09-17 15:34:09,434 - INFO - Dataset cyberbullying_tweets.csv columns: ['tweet_text', 'cyberbullying_type']
+2025-09-17 15:34:09,434 - INFO - Dataset shape: (47692, 2)
+2025-09-17 15:34:09,459 - INFO - Processed cyberbullying_tweets.csv: 47692 samples, labels: {1: 39747, 0: 7945}
+2025-09-17 15:34:09,459 - INFO - Loaded 47692 samples from datasets/cyberbullying/cyberbullying_tweets.csv
+2025-09-17 15:34:09,459 - INFO - Loading dataset: datasets/cyberbullying/final_hateXplain.csv
+2025-09-17 15:34:09,523 - INFO - Dataset final_hatexplain.csv columns: ['comment', 'label', 'Race', 'Religion', 'Gender', 'Sexual Orientation', 'Miscellaneous']
+2025-09-17 15:34:09,523 - INFO - Dataset shape: (20109, 7)
+2025-09-17 15:34:09,525 - INFO - Generic fallback - unique labels: ['normal' 'offensive' 'hatespeech']
+2025-09-17 15:34:09,553 - INFO - Processed final_hatexplain.csv: 20109 samples, labels: {1: 12291, 0: 7818}
+2025-09-17 15:34:09,553 - INFO - Loaded 20109 samples from datasets/cyberbullying/final_hateXplain.csv
+2025-09-17 15:34:09,554 - INFO - Loading dataset: datasets/cyberbullying/aggression_parsed_dataset.csv
+2025-09-17 15:34:10,202 - INFO - Dataset aggression_parsed_dataset.csv columns: ['index', 'Text', 'ed_label_0', 'ed_label_1', 'oh_label']
+2025-09-17 15:34:10,203 - INFO - Dataset shape: (115864, 5)
+2025-09-17 15:34:10,258 - INFO - Processed aggression_parsed_dataset.csv: 115864 samples, labels: {1: 112544, 0: 3320}
+2025-09-17 15:34:10,259 - INFO - Loaded 115864 samples from datasets/cyberbullying/aggression_parsed_dataset.csv
+2025-09-17 15:34:10,259 - INFO - Loading dataset: datasets/cyberbullying/attack_parsed_dataset.csv
+2025-09-17 15:34:10,899 - INFO - Dataset attack_parsed_dataset.csv columns: ['index', 'Text', 'ed_label_0', 'ed_label_1', 'oh_label']
+2025-09-17 15:34:10,900 - INFO - Dataset shape: (115864, 5)
+2025-09-17 15:34:10,955 - INFO - Processed attack_parsed_dataset.csv: 115864 samples, labels: {1: 112808, 0: 3056}
+2025-09-17 15:34:10,955 - INFO - Loaded 115864 samples from datasets/cyberbullying/attack_parsed_dataset.csv
+2025-09-17 15:34:10,955 - INFO - Loading dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv
+2025-09-17 15:34:11,789 - INFO - Dataset toxicity_parsed_dataset.csv columns: ['index', 'Text', 'ed_label_0', 'ed_label_1', 'oh_label']
+2025-09-17 15:34:11,790 - INFO - Dataset shape: (159686, 5)
+2025-09-17 15:34:11,874 - INFO - Processed toxicity_parsed_dataset.csv: 159686 samples, labels: {1: 155215, 0: 4471}
+2025-09-17 15:34:11,875 - INFO - Loaded 159686 samples from datasets/cyberbullying/toxicity_parsed_dataset.csv
+2025-09-17 15:34:11,875 - INFO - Loading dataset: datasets/cyberbullying/twitter_parsed_dataset.csv
+2025-09-17 15:34:11,927 - INFO - Dataset twitter_parsed_dataset.csv columns: ['index', 'id', 'Text', 'Annotation', 'oh_label']
+2025-09-17 15:34:11,928 - INFO - Dataset shape: (16851, 5)
+2025-09-17 15:34:11,930 - INFO - Unique values in Annotation: ['none' 'sexism' 'racism' nan]
+2025-09-17 15:34:11,962 - INFO - Processed twitter_parsed_dataset.csv: 16850 samples, labels: {0: 11501, 1: 5349}
+2025-09-17 15:34:11,963 - INFO - Loaded 16850 samples from datasets/cyberbullying/twitter_parsed_dataset.csv
+2025-09-17 15:34:11,964 - INFO - Loading dataset: datasets/cyberbullying/twitter_racism_parsed_dataset.csv
+2025-09-17 15:34:12,005 - INFO - Dataset twitter_racism_parsed_dataset.csv columns: ['index', 'id', 'Text', 'Annotation', 'oh_label']
+2025-09-17 15:34:12,005 - INFO - Dataset shape: (13471, 5)
+2025-09-17 15:34:12,007 - INFO - Unique values in Annotation: ['racism' 'none']
+2025-09-17 15:34:12,032 - INFO - Processed twitter_racism_parsed_dataset.csv: 13471 samples, labels: {0: 11501, 1: 1970}
+2025-09-17 15:34:12,033 - INFO - Loaded 13471 samples from datasets/cyberbullying/twitter_racism_parsed_dataset.csv
+2025-09-17 15:34:12,033 - INFO - Loading dataset: datasets/cyberbullying/twitter_sexism_parsed_dataset.csv
+2025-09-17 15:34:12,077 - INFO - Dataset twitter_sexism_parsed_dataset.csv columns: ['index', 'id', 'Text', 'Annotation', 'oh_label']
+2025-09-17 15:34:12,078 - INFO - Dataset shape: (14881, 5)
+2025-09-17 15:34:12,080 - INFO - Unique values in Annotation: ['sexism' 'none' nan]
+2025-09-17 15:34:12,108 - INFO - Processed twitter_sexism_parsed_dataset.csv: 14880 samples, labels: {0: 11501, 1: 3379}
+2025-09-17 15:34:12,108 - INFO - Loaded 14880 samples from datasets/cyberbullying/twitter_sexism_parsed_dataset.csv
+2025-09-17 15:34:12,108 - INFO - Loading dataset: datasets/cyberbullying/youtube_parsed_dataset.csv
+2025-09-17 15:34:12,156 - INFO - Dataset youtube_parsed_dataset.csv columns: ['index', 'UserIndex', 'Text', 'Number of Comments', 'Number of Subscribers', 'Membership Duration', 'Number of Uploads', 'Profanity in UserID', 'Age', 'oh_label']
+2025-09-17 15:34:12,156 - INFO - Dataset shape: (3464, 10)
+2025-09-17 15:34:12,160 - INFO - Processed youtube_parsed_dataset.csv: 3464 samples, labels: {0: 3047, 1: 417}
+2025-09-17 15:34:12,160 - INFO - Loaded 3464 samples from datasets/cyberbullying/youtube_parsed_dataset.csv
+2025-09-17 15:34:12,160 - INFO - Loading dataset: datasets/cyberbullying/kaggle_parsed_dataset.csv
+2025-09-17 15:34:12,188 - INFO - Dataset kaggle_parsed_dataset.csv columns: ['index', 'oh_label', 'Date', 'Text']
+2025-09-17 15:34:12,188 - INFO - Dataset shape: (8799, 4)
+2025-09-17 15:34:12,194 - INFO - Processed kaggle_parsed_dataset.csv: 8799 samples, labels: {0: 5993, 1: 2806}
+2025-09-17 15:34:12,194 - INFO - Loaded 8799 samples from datasets/cyberbullying/kaggle_parsed_dataset.csv
+2025-09-17 15:34:53,833 - INFO - Original distribution: {1: 446526, 0: 70153}
+2025-09-17 15:34:53,898 - INFO - Enhanced balanced dataset from 516679 to 150000 samples
+2025-09-17 15:34:53,900 - INFO - New distribution: {0: 75000, 1: 75000}
+2025-09-17 15:34:53,931 - INFO - Final dataset size: 150000
+2025-09-17 15:34:53,932 - INFO - Label distribution: [75000 75000]
+2025-09-17 15:34:53,955 - INFO - Enhanced Dataset Statistics:
+2025-09-17 15:34:53,956 - INFO -   Total samples: 150000
+2025-09-17 15:34:53,967 - INFO -   Positive samples (cyberbullying): 75000
+2025-09-17 15:34:53,978 - INFO -   Negative samples (not cyberbullying): 75000
+2025-09-17 15:34:53,989 - INFO -   Class balance ratio: 0.500
+2025-09-17 15:34:54,011 - INFO - Dataset has good balance (minority class: 50.0%)
+2025-09-17 15:34:54,012 - INFO - Training enhanced model with ensemble methods...
+2025-09-17 15:34:54,012 - INFO - This includes hyperparameter tuning and may take 10-30 minutes...
+2025-09-17 15:34:54,013 - INFO - Components: Logistic Regression + Random Forest + SVM + Dynamic Thresholds
+2025-09-17 15:34:54,067 - INFO - Vectorizing text data with enhanced features...
+2025-09-17 15:35:14,128 - INFO - Tuning Logistic Regression...
+2025-09-17 15:35:31,253 - INFO - Best LR params: {'C': 2.0, 'penalty': 'l2', 'solver': 'lbfgs'}
+2025-09-17 15:35:31,253 - INFO - Tuning Random Forest...
+2025-09-17 15:36:37,240 - INFO - Best RF params: {'max_depth': 20, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 200}
+2025-09-17 15:36:37,241 - INFO - Tuning SVM...
+2025-09-17 15:39:42,538 - INFO - Best SVM params: {'C': 1.0, 'gamma': 'scale', 'kernel': 'rbf'}
+2025-09-17 15:39:42,540 - INFO - Training ensemble model...
+2025-09-17 18:45:51,055 - INFO - Starting Enhanced Cyberbullying Detection Model Training
+2025-09-17 18:45:51,056 - INFO - ============================================================
+2025-09-17 18:46:00,777 - WARNING - Missing optional packages: matplotlib
+2025-09-17 18:46:00,778 - WARNING - For better accuracy, install: pip install matplotlib
+2025-09-17 18:46:00,778 - INFO - Enhanced features will still work without optional packages
+2025-09-17 18:46:00,778 - INFO - Setting up NLTK data...
+2025-09-17 18:46:00,780 - INFO - [OK] NLTK punkt already available
+2025-09-17 18:46:00,781 - INFO - [OK] NLTK stopwords already available
+2025-09-17 18:46:00,800 - INFO - Downloading NLTK data: wordnet
+2025-09-17 18:46:01,816 - INFO - [OK] Downloaded wordnet
+2025-09-17 18:46:01,826 - INFO - Downloading NLTK data: omw-1.4
+2025-09-17 18:46:01,877 - INFO - [OK] Downloaded omw-1.4
+2025-09-17 18:46:01,878 - INFO - NLTK data setup completed
+2025-09-17 18:46:01,894 - INFO - [OK] Found dataset: datasets/cyberbullying/cyberbullying_tweets.csv (6.8 MB)
+2025-09-17 18:46:01,909 - INFO - [OK] Found dataset: datasets/cyberbullying/final_hateXplain.csv (3.6 MB)
+2025-09-17 18:46:02,137 - INFO - [OK] Found dataset: datasets/cyberbullying/aggression_parsed_dataset.csv (48.1 MB)
+2025-09-17 18:46:02,405 - INFO - [OK] Found dataset: datasets/cyberbullying/attack_parsed_dataset.csv (48.0 MB)
+2025-09-17 18:46:02,417 - INFO - [OK] Found dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv (63.6 MB)
+2025-09-17 18:46:02,433 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_parsed_dataset.csv (2.4 MB)
+2025-09-17 18:46:02,474 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_racism_parsed_dataset.csv (1.9 MB)
+2025-09-17 18:46:02,489 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_sexism_parsed_dataset.csv (2.1 MB)
+2025-09-17 18:46:02,503 - INFO - [OK] Found dataset: datasets/cyberbullying/youtube_parsed_dataset.csv (3.7 MB)
+2025-09-17 18:46:02,515 - INFO - [OK] Found dataset: datasets/cyberbullying/kaggle_parsed_dataset.csv (1.7 MB)
+2025-09-17 18:46:02,515 - INFO - Total dataset size: 181.9 MB
+2025-09-17 18:46:02,516 - INFO - Found 10 usable datasets
+2025-09-17 18:46:02,516 - INFO - Total dataset size: 181.9 MB
+2025-09-17 18:46:02,521 - ERROR - Could not import EnhancedCyberbullyingDetector
+2025-09-17 18:46:02,522 - ERROR - Make sure the enhanced detector.py file is in the correct location
+2025-09-17 18:47:04,751 - INFO - Starting Enhanced Cyberbullying Detection Model Training
+2025-09-17 18:47:04,751 - INFO - ============================================================
+2025-09-17 18:47:07,041 - WARNING - Missing optional packages: matplotlib
+2025-09-17 18:47:07,042 - WARNING - For better accuracy, install: pip install matplotlib
+2025-09-17 18:47:07,042 - INFO - Enhanced features will still work without optional packages
+2025-09-17 18:47:07,042 - INFO - Setting up NLTK data...
+2025-09-17 18:47:07,043 - INFO - [OK] NLTK punkt already available
+2025-09-17 18:47:07,043 - INFO - [OK] NLTK stopwords already available
+2025-09-17 18:47:07,045 - INFO - Downloading NLTK data: wordnet
+2025-09-17 18:47:07,839 - INFO - [OK] Downloaded wordnet
+2025-09-17 18:47:07,841 - INFO - Downloading NLTK data: omw-1.4
+2025-09-17 18:47:07,880 - INFO - [OK] Downloaded omw-1.4
+2025-09-17 18:47:07,881 - INFO - NLTK data setup completed
+2025-09-17 18:47:07,887 - INFO - [OK] Found dataset: datasets/cyberbullying/cyberbullying_tweets.csv (6.8 MB)
+2025-09-17 18:47:07,892 - INFO - [OK] Found dataset: datasets/cyberbullying/final_hateXplain.csv (3.6 MB)
+2025-09-17 18:47:07,897 - INFO - [OK] Found dataset: datasets/cyberbullying/aggression_parsed_dataset.csv (48.1 MB)
+2025-09-17 18:47:07,902 - INFO - [OK] Found dataset: datasets/cyberbullying/attack_parsed_dataset.csv (48.0 MB)
+2025-09-17 18:47:07,906 - INFO - [OK] Found dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv (63.6 MB)
+2025-09-17 18:47:07,912 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_parsed_dataset.csv (2.4 MB)
+2025-09-17 18:47:07,917 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_racism_parsed_dataset.csv (1.9 MB)
+2025-09-17 18:47:07,922 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_sexism_parsed_dataset.csv (2.1 MB)
+2025-09-17 18:47:07,925 - INFO - [OK] Found dataset: datasets/cyberbullying/youtube_parsed_dataset.csv (3.7 MB)
+2025-09-17 18:47:07,929 - INFO - [OK] Found dataset: datasets/cyberbullying/kaggle_parsed_dataset.csv (1.7 MB)
+2025-09-17 18:47:07,929 - INFO - Total dataset size: 181.9 MB
+2025-09-17 18:47:07,930 - INFO - Found 10 usable datasets
+2025-09-17 18:47:07,930 - INFO - Total dataset size: 181.9 MB
+2025-09-17 18:47:07,963 - ERROR - Could not import EnhancedCyberbullyingDetector
+2025-09-17 18:47:07,963 - ERROR - Make sure the enhanced detector.py file is in the correct location
+2025-09-17 18:48:15,286 - INFO - Starting Enhanced Cyberbullying Detection Model Training
+2025-09-17 18:48:15,286 - INFO - ============================================================
+2025-09-17 18:48:17,812 - WARNING - Missing optional packages: matplotlib
+2025-09-17 18:48:17,812 - WARNING - For better accuracy, install: pip install matplotlib
+2025-09-17 18:48:17,812 - INFO - Enhanced features will still work without optional packages
+2025-09-17 18:48:17,813 - INFO - Setting up NLTK data...
+2025-09-17 18:48:17,813 - INFO - [OK] NLTK punkt already available
+2025-09-17 18:48:17,814 - INFO - [OK] NLTK stopwords already available
+2025-09-17 18:48:17,815 - INFO - Downloading NLTK data: wordnet
+2025-09-17 18:48:18,072 - INFO - [OK] Downloaded wordnet
+2025-09-17 18:48:18,073 - INFO - Downloading NLTK data: omw-1.4
+2025-09-17 18:48:18,111 - INFO - [OK] Downloaded omw-1.4
+2025-09-17 18:48:18,112 - INFO - NLTK data setup completed
+2025-09-17 18:48:18,117 - INFO - [OK] Found dataset: datasets/cyberbullying/cyberbullying_tweets.csv (6.8 MB)
+2025-09-17 18:48:18,123 - INFO - [OK] Found dataset: datasets/cyberbullying/final_hateXplain.csv (3.6 MB)
+2025-09-17 18:48:18,126 - INFO - [OK] Found dataset: datasets/cyberbullying/aggression_parsed_dataset.csv (48.1 MB)
+2025-09-17 18:48:18,130 - INFO - [OK] Found dataset: datasets/cyberbullying/attack_parsed_dataset.csv (48.0 MB)
+2025-09-17 18:48:18,135 - INFO - [OK] Found dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv (63.6 MB)
+2025-09-17 18:48:18,139 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_parsed_dataset.csv (2.4 MB)
+2025-09-17 18:48:18,144 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_racism_parsed_dataset.csv (1.9 MB)
+2025-09-17 18:48:18,148 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_sexism_parsed_dataset.csv (2.1 MB)
+2025-09-17 18:48:18,151 - INFO - [OK] Found dataset: datasets/cyberbullying/youtube_parsed_dataset.csv (3.7 MB)
+2025-09-17 18:48:18,154 - INFO - [OK] Found dataset: datasets/cyberbullying/kaggle_parsed_dataset.csv (1.7 MB)
+2025-09-17 18:48:18,154 - INFO - Total dataset size: 181.9 MB
+2025-09-17 18:48:18,154 - INFO - Found 10 usable datasets
+2025-09-17 18:48:18,154 - INFO - Total dataset size: 181.9 MB
+2025-09-17 18:48:18,159 - ERROR - Could not import EnhancedCyberbullyingDetector
+2025-09-17 18:48:18,159 - ERROR - Make sure the enhanced detector.py file is in the correct location
+2025-09-17 18:48:32,097 - INFO - Starting Enhanced Cyberbullying Detection Model Training
+2025-09-17 18:48:32,097 - INFO - ============================================================
+2025-09-17 18:48:52,733 - INFO - Setting up NLTK data...
+2025-09-17 18:48:52,733 - INFO - [OK] NLTK punkt already available
+2025-09-17 18:48:52,734 - INFO - [OK] NLTK stopwords already available
+2025-09-17 18:48:52,736 - INFO - Downloading NLTK data: wordnet
+2025-09-17 18:48:53,040 - INFO - [OK] Downloaded wordnet
+2025-09-17 18:48:53,042 - INFO - Downloading NLTK data: omw-1.4
+2025-09-17 18:48:53,081 - INFO - [OK] Downloaded omw-1.4
+2025-09-17 18:48:53,081 - INFO - NLTK data setup completed
+2025-09-17 18:48:53,091 - INFO - [OK] Found dataset: datasets/cyberbullying/cyberbullying_tweets.csv (6.8 MB)
+2025-09-17 18:48:53,096 - INFO - [OK] Found dataset: datasets/cyberbullying/final_hateXplain.csv (3.6 MB)
+2025-09-17 18:48:53,099 - INFO - [OK] Found dataset: datasets/cyberbullying/aggression_parsed_dataset.csv (48.1 MB)
+2025-09-17 18:48:53,102 - INFO - [OK] Found dataset: datasets/cyberbullying/attack_parsed_dataset.csv (48.0 MB)
+2025-09-17 18:48:53,105 - INFO - [OK] Found dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv (63.6 MB)
+2025-09-17 18:48:53,108 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_parsed_dataset.csv (2.4 MB)
+2025-09-17 18:48:53,113 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_racism_parsed_dataset.csv (1.9 MB)
+2025-09-17 18:48:53,117 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_sexism_parsed_dataset.csv (2.1 MB)
+2025-09-17 18:48:53,120 - INFO - [OK] Found dataset: datasets/cyberbullying/youtube_parsed_dataset.csv (3.7 MB)
+2025-09-17 18:48:53,123 - INFO - [OK] Found dataset: datasets/cyberbullying/kaggle_parsed_dataset.csv (1.7 MB)
+2025-09-17 18:48:53,124 - INFO - Total dataset size: 181.9 MB
+2025-09-17 18:48:53,124 - INFO - Found 10 usable datasets
+2025-09-17 18:48:53,124 - INFO - Total dataset size: 181.9 MB
+2025-09-17 18:49:04,847 - WARNING - From C:\Users\yesha\Desktop\threat_det\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+2025-09-17 18:49:05,579 - INFO - Transformer model loaded successfully
+2025-09-17 18:49:05,579 - INFO - Loading and preprocessing datasets with enhanced features...
+2025-09-17 18:49:05,579 - INFO - Loading dataset: datasets/cyberbullying/cyberbullying_tweets.csv
+2025-09-17 18:49:05,633 - INFO - Dataset cyberbullying_tweets.csv columns: ['tweet_text', 'cyberbullying_type']
+2025-09-17 18:49:05,634 - INFO - Dataset shape: (47692, 2)
+2025-09-17 18:49:05,655 - INFO - Processed cyberbullying_tweets.csv: 47692 samples, labels: {1: 39747, 0: 7945}
+2025-09-17 18:49:05,655 - INFO - Loaded 47692 samples from datasets/cyberbullying/cyberbullying_tweets.csv
+2025-09-17 18:49:05,655 - INFO - Loading dataset: datasets/cyberbullying/final_hateXplain.csv
+2025-09-17 18:49:05,688 - INFO - Dataset final_hatexplain.csv columns: ['comment', 'label', 'Race', 'Religion', 'Gender', 'Sexual Orientation', 'Miscellaneous']
+2025-09-17 18:49:05,689 - INFO - Dataset shape: (20109, 7)
+2025-09-17 18:49:05,692 - INFO - Generic fallback - unique labels: ['normal' 'offensive' 'hatespeech']
+2025-09-17 18:49:05,705 - INFO - Processed final_hatexplain.csv: 20109 samples, labels: {1: 12291, 0: 7818}
+2025-09-17 18:49:05,705 - INFO - Loaded 20109 samples from datasets/cyberbullying/final_hateXplain.csv
+2025-09-17 18:49:05,705 - INFO - Loading dataset: datasets/cyberbullying/aggression_parsed_dataset.csv
+2025-09-17 18:49:06,079 - INFO - Dataset aggression_parsed_dataset.csv columns: ['index', 'Text', 'ed_label_0', 'ed_label_1', 'oh_label']
+2025-09-17 18:49:06,080 - INFO - Dataset shape: (115864, 5)
+2025-09-17 18:49:06,112 - INFO - Processed aggression_parsed_dataset.csv: 115864 samples, labels: {1: 112544, 0: 3320}
+2025-09-17 18:49:06,112 - INFO - Loaded 115864 samples from datasets/cyberbullying/aggression_parsed_dataset.csv
+2025-09-17 18:49:06,113 - INFO - Loading dataset: datasets/cyberbullying/attack_parsed_dataset.csv
+2025-09-17 18:49:06,488 - INFO - Dataset attack_parsed_dataset.csv columns: ['index', 'Text', 'ed_label_0', 'ed_label_1', 'oh_label']
+2025-09-17 18:49:06,488 - INFO - Dataset shape: (115864, 5)
+2025-09-17 18:49:06,523 - INFO - Processed attack_parsed_dataset.csv: 115864 samples, labels: {1: 112808, 0: 3056}
+2025-09-17 18:49:06,524 - INFO - Loaded 115864 samples from datasets/cyberbullying/attack_parsed_dataset.csv
+2025-09-17 18:49:06,524 - INFO - Loading dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv
+2025-09-17 18:49:07,005 - INFO - Dataset toxicity_parsed_dataset.csv columns: ['index', 'Text', 'ed_label_0', 'ed_label_1', 'oh_label']
+2025-09-17 18:49:07,006 - INFO - Dataset shape: (159686, 5)
+2025-09-17 18:49:07,056 - INFO - Processed toxicity_parsed_dataset.csv: 159686 samples, labels: {1: 155215, 0: 4471}
+2025-09-17 18:49:07,056 - INFO - Loaded 159686 samples from datasets/cyberbullying/toxicity_parsed_dataset.csv
+2025-09-17 18:49:07,057 - INFO - Loading dataset: datasets/cyberbullying/twitter_parsed_dataset.csv
+2025-09-17 18:49:07,088 - INFO - Dataset twitter_parsed_dataset.csv columns: ['index', 'id', 'Text', 'Annotation', 'oh_label']
+2025-09-17 18:49:07,089 - INFO - Dataset shape: (16851, 5)
+2025-09-17 18:49:07,091 - INFO - Unique values in Annotation: ['none' 'sexism' 'racism' nan]
+2025-09-17 18:49:07,109 - INFO - Processed twitter_parsed_dataset.csv: 16850 samples, labels: {0: 11501, 1: 5349}
+2025-09-17 18:49:07,109 - INFO - Loaded 16850 samples from datasets/cyberbullying/twitter_parsed_dataset.csv
+2025-09-17 18:49:07,109 - INFO - Loading dataset: datasets/cyberbullying/twitter_racism_parsed_dataset.csv
+2025-09-17 18:49:07,133 - INFO - Dataset twitter_racism_parsed_dataset.csv columns: ['index', 'id', 'Text', 'Annotation', 'oh_label']
+2025-09-17 18:49:07,133 - INFO - Dataset shape: (13471, 5)
+2025-09-17 18:49:07,134 - INFO - Unique values in Annotation: ['racism' 'none']
+2025-09-17 18:49:07,148 - INFO - Processed twitter_racism_parsed_dataset.csv: 13471 samples, labels: {0: 11501, 1: 1970}
+2025-09-17 18:49:07,148 - INFO - Loaded 13471 samples from datasets/cyberbullying/twitter_racism_parsed_dataset.csv
+2025-09-17 18:49:07,149 - INFO - Loading dataset: datasets/cyberbullying/twitter_sexism_parsed_dataset.csv
+2025-09-17 18:49:07,173 - INFO - Dataset twitter_sexism_parsed_dataset.csv columns: ['index', 'id', 'Text', 'Annotation', 'oh_label']
+2025-09-17 18:49:07,174 - INFO - Dataset shape: (14881, 5)
+2025-09-17 18:49:07,175 - INFO - Unique values in Annotation: ['sexism' 'none' nan]
+2025-09-17 18:49:07,191 - INFO - Processed twitter_sexism_parsed_dataset.csv: 14880 samples, labels: {0: 11501, 1: 3379}
+2025-09-17 18:49:07,191 - INFO - Loaded 14880 samples from datasets/cyberbullying/twitter_sexism_parsed_dataset.csv
+2025-09-17 18:49:07,192 - INFO - Loading dataset: datasets/cyberbullying/youtube_parsed_dataset.csv
+2025-09-17 18:49:07,220 - INFO - Dataset youtube_parsed_dataset.csv columns: ['index', 'UserIndex', 'Text', 'Number of Comments', 'Number of Subscribers', 'Membership Duration', 'Number of Uploads', 'Profanity in UserID', 'Age', 'oh_label']
+2025-09-17 18:49:07,221 - INFO - Dataset shape: (3464, 10)
+2025-09-17 18:49:07,224 - INFO - Processed youtube_parsed_dataset.csv: 3464 samples, labels: {0: 3047, 1: 417}
+2025-09-17 18:49:07,224 - INFO - Loaded 3464 samples from datasets/cyberbullying/youtube_parsed_dataset.csv
+2025-09-17 18:49:07,224 - INFO - Loading dataset: datasets/cyberbullying/kaggle_parsed_dataset.csv
+2025-09-17 18:49:07,240 - INFO - Dataset kaggle_parsed_dataset.csv columns: ['index', 'oh_label', 'Date', 'Text']
+2025-09-17 18:49:07,240 - INFO - Dataset shape: (8799, 4)
+2025-09-17 18:49:07,244 - INFO - Processed kaggle_parsed_dataset.csv: 8799 samples, labels: {0: 5993, 1: 2806}
+2025-09-17 18:49:07,244 - INFO - Loaded 8799 samples from datasets/cyberbullying/kaggle_parsed_dataset.csv
+2025-09-17 18:49:29,379 - INFO - Original distribution: {1: 446526, 0: 70153}
+2025-09-17 18:49:29,424 - INFO - Enhanced balanced dataset from 516679 to 150000 samples
+2025-09-17 18:49:29,425 - INFO - New distribution: {0: 75000, 1: 75000}
+2025-09-17 18:49:29,447 - INFO - Final dataset size: 150000
+2025-09-17 18:49:29,448 - INFO - Label distribution: [75000 75000]
+2025-09-17 18:49:29,465 - INFO - Enhanced Dataset Statistics:
+2025-09-17 18:49:29,465 - INFO -   Total samples: 150000
+2025-09-17 18:49:29,471 - INFO -   Positive samples (cyberbullying): 75000
+2025-09-17 18:49:29,477 - INFO -   Negative samples (not cyberbullying): 75000
+2025-09-17 18:49:29,483 - INFO -   Class balance ratio: 0.500
+2025-09-17 18:49:29,494 - INFO - Dataset has good balance (minority class: 50.0%)
+2025-09-17 18:49:29,495 - INFO - Training enhanced model with ensemble methods...
+2025-09-17 18:49:29,495 - INFO - This includes hyperparameter tuning and may take 10-30 minutes...
+2025-09-17 18:49:29,495 - INFO - Components: Logistic Regression + Random Forest + SVM + Dynamic Thresholds
+2025-09-17 18:49:29,527 - INFO - Vectorizing text data with enhanced features...
+2025-09-17 18:49:42,381 - INFO - Tuning Logistic Regression...
+2025-09-17 18:49:55,705 - INFO - Best LR params: {'C': 2.0, 'penalty': 'l2', 'solver': 'lbfgs'}
+2025-09-17 18:49:55,705 - INFO - Tuning Random Forest...
+2025-09-17 18:50:48,178 - INFO - Best RF params: {'max_depth': 20, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 200}
+2025-09-17 18:50:48,178 - INFO - Tuning SVM...
+2025-09-17 18:53:04,390 - INFO - Best SVM params: {'C': 2.0, 'gamma': 'scale', 'kernel': 'rbf'}
+2025-09-17 18:53:04,391 - INFO - Training ensemble model...
+2025-09-17 19:39:16,128 - INFO - Starting Enhanced Cyberbullying Detection Model Training
+2025-09-17 19:39:16,129 - INFO - ============================================================
+2025-09-17 19:39:23,482 - INFO - Setting up NLTK data...
+2025-09-17 19:39:23,483 - INFO - [OK] NLTK punkt already available
+2025-09-17 19:39:23,484 - INFO - [OK] NLTK stopwords already available
+2025-09-17 19:39:23,489 - INFO - Downloading NLTK data: wordnet
+2025-09-17 19:39:25,731 - INFO - [OK] Downloaded wordnet
+2025-09-17 19:39:25,736 - INFO - Downloading NLTK data: omw-1.4
+2025-09-17 19:39:25,808 - INFO - [OK] Downloaded omw-1.4
+2025-09-17 19:39:25,808 - INFO - NLTK data setup completed
+2025-09-17 19:39:25,816 - INFO - [OK] Found dataset: datasets/cyberbullying/cyberbullying_tweets.csv (6.8 MB)
+2025-09-17 19:39:25,824 - INFO - [OK] Found dataset: datasets/cyberbullying/final_hateXplain.csv (3.6 MB)
+2025-09-17 19:39:25,830 - INFO - [OK] Found dataset: datasets/cyberbullying/aggression_parsed_dataset.csv (48.1 MB)
+2025-09-17 19:39:25,839 - INFO - [OK] Found dataset: datasets/cyberbullying/attack_parsed_dataset.csv (48.0 MB)
+2025-09-17 19:39:25,845 - INFO - [OK] Found dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv (63.6 MB)
+2025-09-17 19:39:25,851 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_parsed_dataset.csv (2.4 MB)
+2025-09-17 19:39:25,860 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_racism_parsed_dataset.csv (1.9 MB)
+2025-09-17 19:39:25,866 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_sexism_parsed_dataset.csv (2.1 MB)
+2025-09-17 19:39:25,875 - INFO - [OK] Found dataset: datasets/cyberbullying/youtube_parsed_dataset.csv (3.7 MB)
+2025-09-17 19:39:25,880 - INFO - [OK] Found dataset: datasets/cyberbullying/kaggle_parsed_dataset.csv (1.7 MB)
+2025-09-17 19:39:25,880 - INFO - Total dataset size: 181.9 MB
+2025-09-17 19:39:25,881 - INFO - Found 10 usable datasets
+2025-09-17 19:39:25,881 - INFO - Total dataset size: 181.9 MB
+2025-09-17 19:39:26,058 - INFO - Optimized detector initialized (no transformer for speed)
+2025-09-17 19:39:26,058 - INFO - Using optimized detector for enhanced performance
+2025-09-17 19:39:26,058 - INFO - Loading and preprocessing datasets with enhanced features...
+2025-09-17 19:39:26,060 - INFO - Loading dataset: datasets/cyberbullying/cyberbullying_tweets.csv
+2025-09-17 19:39:26,116 - INFO - Processed cyberbullying_tweets.csv: 20000 samples
+2025-09-17 19:39:26,116 - INFO - Loaded 20000 samples from datasets/cyberbullying/cyberbullying_tweets.csv
+2025-09-17 19:39:26,117 - INFO - Loading dataset: datasets/cyberbullying/final_hateXplain.csv
+2025-09-17 19:39:26,183 - INFO - Processed final_hatexplain.csv: 20000 samples
+2025-09-17 19:39:26,183 - INFO - Loaded 20000 samples from datasets/cyberbullying/final_hateXplain.csv
+2025-09-17 19:39:26,184 - INFO - Loading dataset: datasets/cyberbullying/aggression_parsed_dataset.csv
+2025-09-17 19:39:26,299 - INFO - Processed aggression_parsed_dataset.csv: 20000 samples
+2025-09-17 19:39:26,299 - INFO - Loaded 20000 samples from datasets/cyberbullying/aggression_parsed_dataset.csv
+2025-09-17 19:39:26,299 - INFO - Loading dataset: datasets/cyberbullying/attack_parsed_dataset.csv
+2025-09-17 19:39:26,412 - INFO - Processed attack_parsed_dataset.csv: 20000 samples
+2025-09-17 19:39:26,413 - INFO - Loaded 20000 samples from datasets/cyberbullying/attack_parsed_dataset.csv
+2025-09-17 19:39:26,413 - INFO - Loading dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv
+2025-09-17 19:39:26,520 - INFO - Processed toxicity_parsed_dataset.csv: 20000 samples
+2025-09-17 19:39:26,520 - INFO - Loaded 20000 samples from datasets/cyberbullying/toxicity_parsed_dataset.csv
+2025-09-17 19:39:26,521 - INFO - Reached sample limit (100000), stopping data loading
+2025-09-17 19:39:26,523 - INFO - Preprocessing text data...
+2025-09-17 19:39:33,223 - INFO - Original distribution: {1: 82921, 0: 17050}
+2025-09-17 19:39:33,238 - INFO - Optimized balanced dataset: 50000 samples
+2025-09-17 19:39:33,240 - INFO - New distribution: {0: 25000, 1: 25000}
+2025-09-17 19:39:33,250 - INFO - Final optimized dataset size: 50000
+2025-09-17 19:39:33,251 - INFO - Label distribution: [25000 25000]
+2025-09-17 19:39:33,253 - INFO - Enhanced Dataset Statistics:
+2025-09-17 19:39:33,253 - INFO -   Total samples: 50000
+2025-09-17 19:39:33,257 - INFO -   Positive samples (cyberbullying): 25000
+2025-09-17 19:39:33,262 - INFO -   Negative samples (not cyberbullying): 25000
+2025-09-17 19:39:33,267 - INFO -   Class balance ratio: 0.500
+2025-09-17 19:39:33,277 - INFO - Dataset has good balance (minority class: 50.0%)
+2025-09-17 19:39:33,277 - INFO - Training enhanced model with ensemble methods...
+2025-09-17 19:39:33,277 - INFO - This includes hyperparameter tuning and may take 10-30 minutes...
+2025-09-17 19:39:33,278 - INFO - Components: Logistic Regression + Random Forest + SVM + Dynamic Thresholds
+2025-09-17 19:39:33,294 - INFO - Vectorizing text data...
+2025-09-17 19:39:36,677 - INFO - Vectorization completed in 3.38 seconds
+2025-09-17 19:39:36,678 - INFO - Training Logistic Regression...
+2025-09-17 19:39:36,850 - INFO - Logistic Regression trained in 0.17 seconds
+2025-09-17 19:39:36,851 - INFO - Training Random Forest...
+2025-09-17 19:39:37,285 - INFO - Random Forest trained in 0.43 seconds
+2025-09-17 19:39:37,285 - INFO - Creating optimized ensemble...
+2025-09-17 19:39:37,948 - INFO - Ensemble trained in 0.66 seconds
+2025-09-17 19:39:37,948 - INFO - Quick cross-validation...
+2025-09-17 19:39:39,906 - ERROR - Enhanced training failed: This 'VotingClassifier' has no attribute 'predict_proba'
+2025-09-17 19:39:39,961 - ERROR - Traceback (most recent call last):
+  File "C:\Users\yesha\Desktop\threat_det\venv\Lib\site-packages\sklearn\utils\_available_if.py", line 32, in _check
+    check_result = self.check(obj)
+                   ^^^^^^^^^^^^^^^
+  File "C:\Users\yesha\Desktop\threat_det\venv\Lib\site-packages\sklearn\ensemble\_voting.py", line 442, in _check_voting
+    raise AttributeError(
+AttributeError: predict_proba is not available when voting='hard'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\yesha\Desktop\threat_det\backend\modules\cyberbullying\train.py", line 231, in train_enhanced_cyberbullying_model
+    results = detector.enhanced_train_model(X, y)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yesha\Desktop\threat_det\backend\modules\cyberbullying\detector.py", line 559, in enhanced_train_model
+    return self.optimized_train_model(X, y)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yesha\Desktop\threat_det\backend\modules\cyberbullying\detector.py", line 371, in optimized_train_model
+    y_pred_proba = ensemble.predict_proba(X_test_vec)
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yesha\Desktop\threat_det\venv\Lib\site-packages\sklearn\utils\_available_if.py", line 43, in __get__
+    self._check(obj, owner=owner)
+  File "C:\Users\yesha\Desktop\threat_det\venv\Lib\site-packages\sklearn\utils\_available_if.py", line 34, in _check
+    raise AttributeError(attr_err_msg) from e
+AttributeError: This 'VotingClassifier' has no attribute 'predict_proba'
+

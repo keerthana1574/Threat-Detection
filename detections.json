@@ -1,0 +1,44 @@
+{
+  "cyberbullying": [
+    {
+      "text": "You're so stupid, nobody likes you!",
+      "result": {
+        "prediction": true,
+        "confidence": 0.65,
+        "ensemble_probability": 0.65,
+        "processing_time": 0.123,
+        "matched_keywords": [
+          "stupid"
+        ],
+        "enhanced": false,
+        "models_used": [
+          "keyword_matching"
+        ],
+        "individual_predictions": {
+          "keyword_matching": {
+            "probability": 0.65,
+            "prediction": true
+          }
+        },
+        "timestamp": "2026-03-10T21:28:54.758119"
+      },
+      "timestamp": "2026-03-10T21:28:54.758119"
+    },
+    {
+      "text": "You're so stupid, nobody likes you!",
+      "result": {
+        "prediction": true,
+        "confidence": 0.3233828887813791,
+        "ensemble_probability": 0.6116914443906896,
+        "processing_time": 0.123,
+        "models_used": [
+          "naive_bayes",
+          "sgd_logistic",
+          "logistic_regression",
+          "random_forest",
+          "lstm"
+        ],
+        "individual_predictions": {
+          "naive_bayes": {
+            "probability": 0.8753236158026386,
+            "prediction": 

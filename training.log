@@ -1,0 +1,897 @@
+2025-09-16 18:50:13,742 - INFO - Starting Cyberbullying Detection Model Training
+2025-09-16 18:50:13,742 - INFO - ============================================================
+2025-09-16 18:50:30,118 - INFO - Downloading NLTK data: wordnet
+2025-09-16 18:50:30,530 - INFO - Downloading NLTK data: omw-1.4
+2025-09-16 18:50:30,608 - INFO - NLTK data check completed
+2025-09-16 18:50:31,720 - INFO - Found 10 usable datasets
+2025-09-16 18:50:31,721 - INFO - Total dataset size: 181.9 MB
+2025-09-16 18:50:48,673 - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2025-09-16 18:53:29,507 - INFO - Transformer model loaded successfully
+2025-09-16 18:53:29,508 - INFO - Loading and preprocessing datasets...
+2025-09-16 18:53:29,508 - INFO - Loading dataset: datasets/cyberbullying/cyberbullying_tweets.csv
+2025-09-16 18:53:29,708 - INFO - Loaded 47692 samples from datasets/cyberbullying/cyberbullying_tweets.csv
+2025-09-16 18:53:29,708 - INFO - Loading dataset: datasets/cyberbullying/final_hateXplain.csv
+2025-09-16 18:53:29,807 - INFO - Unique labels in final_hatexplain.csv: ['normal' 'offensive' 'hatespeech']
+2025-09-16 18:53:29,867 - INFO - Loaded 20109 samples from datasets/cyberbullying/final_hateXplain.csv
+2025-09-16 18:53:29,868 - INFO - Loading dataset: datasets/cyberbullying/aggression_parsed_dataset.csv
+2025-09-16 18:53:31,121 - INFO - Loaded 115864 samples from datasets/cyberbullying/aggression_parsed_dataset.csv
+2025-09-16 18:53:31,122 - INFO - Loading dataset: datasets/cyberbullying/attack_parsed_dataset.csv
+2025-09-16 18:53:32,376 - INFO - Loaded 115864 samples from datasets/cyberbullying/attack_parsed_dataset.csv
+2025-09-16 18:53:32,377 - INFO - Loading dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv
+2025-09-16 18:53:34,013 - INFO - Loaded 159686 samples from datasets/cyberbullying/toxicity_parsed_dataset.csv
+2025-09-16 18:53:34,014 - INFO - Loading dataset: datasets/cyberbullying/twitter_parsed_dataset.csv
+2025-09-16 18:53:34,123 - ERROR - Error standardizing dataset datasets/cyberbullying/twitter_parsed_dataset.csv: 'label'
+2025-09-16 18:53:34,124 - INFO - Loading dataset: datasets/cyberbullying/twitter_racism_parsed_dataset.csv
+2025-09-16 18:53:34,190 - ERROR - Error standardizing dataset datasets/cyberbullying/twitter_racism_parsed_dataset.csv: 'label'
+2025-09-16 18:53:34,191 - INFO - Loading dataset: datasets/cyberbullying/twitter_sexism_parsed_dataset.csv
+2025-09-16 18:53:34,277 - ERROR - Error standardizing dataset datasets/cyberbullying/twitter_sexism_parsed_dataset.csv: 'label'
+2025-09-16 18:53:34,278 - INFO - Loading dataset: datasets/cyberbullying/youtube_parsed_dataset.csv
+2025-09-16 18:53:34,372 - INFO - Loaded 3464 samples from datasets/cyberbullying/youtube_parsed_dataset.csv
+2025-09-16 18:53:34,373 - INFO - Loading dataset: datasets/cyberbullying/kaggle_parsed_dataset.csv
+2025-09-16 18:53:34,440 - INFO - Loaded 8799 samples from datasets/cyberbullying/kaggle_parsed_dataset.csv
+2025-09-16 18:54:13,013 - INFO - Final dataset size: 470929
+2025-09-16 18:54:13,019 - INFO - Label distribution: [372196  98733]
+2025-09-16 18:54:13,032 - INFO - Dataset Statistics:
+2025-09-16 18:54:13,035 - INFO -   Total samples: 470929
+2025-09-16 18:54:13,090 - INFO -   Positive samples (cyberbullying): 98733
+2025-09-16 18:54:13,143 - INFO -   Negative samples (not cyberbullying): 372196
+2025-09-16 18:54:13,200 - INFO -   Class balance ratio: 0.210
+2025-09-16 18:54:13,309 - INFO - Training model...
+2025-09-16 18:54:13,310 - INFO - This may take several minutes depending on dataset size...
+2025-09-16 18:54:13,567 - INFO - Training cyberbullying detection model...
+2025-09-16 18:56:02,370 - INFO - Model accuracy: 0.7524
+2025-09-16 18:56:02,526 - INFO - Classification report:
+              precision    recall  f1-score   support
+
+           0       0.95      0.72      0.82     74439
+           1       0.45      0.86      0.59     19747
+
+    accuracy                           0.75     94186
+   macro avg       0.70      0.79      0.71     94186
+weighted avg       0.85      0.75      0.77     94186
+
+2025-09-16 18:56:28,878 - INFO - Model saved to backend/models/cyberbullying/cyberbullying_model.pkl
+2025-09-16 18:56:29,084 - INFO - Training completed!
+2025-09-16 18:56:29,084 - INFO - ========================================
+2025-09-16 18:56:29,084 - INFO - RESULTS:
+2025-09-16 18:56:29,084 - INFO - ========================================
+2025-09-16 18:56:29,084 - INFO - Model accuracy: 0.7524
+2025-09-16 18:56:29,085 - INFO - Confusion Matrix:
+2025-09-16 18:56:29,085 - INFO -   True Negatives:  53802
+2025-09-16 18:56:29,085 - INFO -   False Positives: 20637
+2025-09-16 18:56:29,085 - INFO -   False Negatives: 2687
+2025-09-16 18:56:29,086 - INFO -   True Positives:  17060
+2025-09-16 18:56:29,086 - INFO - Precision: 0.4526
+2025-09-16 18:56:29,086 - INFO - Recall: 0.8639
+2025-09-16 18:56:29,086 - INFO - F1-Score: 0.5940
+2025-09-16 18:56:29,086 - INFO - 
+Top 10 most important features:
+2025-09-16 18:56:29,086 - INFO -    1. article              (0.0411)
+2025-09-16 18:56:29,087 - INFO -    2. fuck                 (0.0333)
+2025-09-16 18:56:29,087 - INFO -    3. page                 (0.0268)
+2025-09-16 18:56:29,087 - INFO -    4. fucking              (0.0251)
+2025-09-16 18:56:29,087 - INFO -    5. school               (0.0233)
+2025-09-16 18:56:29,087 - INFO -    6. nigger               (0.0219)
+2025-09-16 18:56:29,088 - INFO -    7. gay                  (0.0203)
+2025-09-16 18:56:29,088 - INFO -    8. section              (0.0160)
+2025-09-16 18:56:29,088 - INFO -    9. bitch                (0.0158)
+2025-09-16 18:56:29,088 - INFO -   10. shit                 (0.0147)
+2025-09-16 18:56:29,088 - INFO - 
+Model saved to: backend/models/cyberbullying/
+2025-09-16 18:56:29,089 - INFO - 
+========================================
+2025-09-16 18:56:29,089 - INFO - TESTING MODEL WITH SAMPLE TEXTS
+2025-09-16 18:56:29,089 - INFO - ========================================
+2025-09-16 18:56:30,427 - INFO - Transformer model loaded successfully
+2025-09-16 18:56:46,662 - INFO - Cyberbullying model loaded successfully
+2025-09-16 18:56:47,042 - INFO -   Text: You're such an amazing person! Keep being awesome!
+2025-09-16 18:56:47,042 - INFO -   Expected: False, Predicted: True
+2025-09-16 18:56:47,042 - INFO -   Confidence: 0.510, Severity: low
+2025-09-16 18:56:47,255 - INFO -   Text: You're so ugly and stupid, nobody likes you
+2025-09-16 18:56:47,255 - INFO -   Expected: True, Predicted: True
+2025-09-16 18:56:47,255 - INFO -   Confidence: 0.544, Severity: high
+2025-09-16 18:56:47,255 - INFO -   Issues detected: personal_attacks
+2025-09-16 18:56:47,473 - INFO -   Text: Just had a great day at the park with friends
+2025-09-16 18:56:47,473 - INFO -   Expected: False, Predicted: True
+2025-09-16 18:56:47,474 - INFO -   Confidence: 0.510, Severity: low
+2025-09-16 18:56:47,679 - INFO -   Text: Kill yourself, you worthless piece of trash
+2025-09-16 18:56:47,680 - INFO -   Expected: True, Predicted: True
+2025-09-16 18:56:47,680 - INFO -   Confidence: 0.515, Severity: critical
+2025-09-16 18:56:47,680 - INFO -   Issues detected: threats, personal_attacks
+2025-09-16 18:56:47,868 - INFO -   Text: Hey, how are you doing today? Hope you're well!
+2025-09-16 18:56:47,868 - INFO -   Expected: False, Predicted: True
+2025-09-16 18:56:47,868 - INFO -   Confidence: 0.510, Severity: low
+2025-09-16 18:56:48,068 - INFO -   Text: I hate you so much, go die!
+2025-09-16 18:56:48,068 - INFO -   Expected: True, Predicted: True
+2025-09-16 18:56:48,068 - INFO -   Confidence: 0.523, Severity: critical
+2025-09-16 18:56:48,069 - INFO -   Issues detected: threats
+2025-09-16 18:56:48,293 - INFO -   Text: Looking forward to the weekend
+2025-09-16 18:56:48,294 - INFO -   Expected: False, Predicted: True
+2025-09-16 18:56:48,294 - INFO -   Confidence: 0.510, Severity: low
+2025-09-16 18:56:48,415 - INFO -   Text: You fat loser, you should just disappear
+2025-09-16 18:56:48,415 - INFO -   Expected: True, Predicted: True
+2025-09-16 18:56:48,416 - INFO -   Confidence: 0.518, Severity: high
+2025-09-16 18:56:48,416 - INFO -   Issues detected: personal_attacks
+2025-09-16 18:56:48,416 - INFO - 
+Test Results: 4/8 correct (50.0%)
+2025-09-16 19:17:28,306 - INFO - Starting Cyberbullying Detection Model Training
+2025-09-16 19:17:28,307 - INFO - ============================================================
+2025-09-16 19:17:32,490 - INFO - Downloading NLTK data: wordnet
+2025-09-16 19:17:32,787 - INFO - Downloading NLTK data: omw-1.4
+2025-09-16 19:17:32,866 - INFO - NLTK data check completed
+2025-09-16 19:17:32,966 - INFO - Found 10 usable datasets
+2025-09-16 19:17:32,966 - INFO - Total dataset size: 181.9 MB
+2025-09-16 19:17:40,554 - INFO - Transformer model loaded successfully
+2025-09-16 19:17:40,555 - INFO - Loading and preprocessing datasets...
+2025-09-16 19:17:40,555 - INFO - Loading dataset: datasets/cyberbullying/cyberbullying_tweets.csv
+2025-09-16 19:17:40,666 - INFO - Loaded 47692 samples from datasets/cyberbullying/cyberbullying_tweets.csv
+2025-09-16 19:17:40,667 - INFO - Loading dataset: datasets/cyberbullying/final_hateXplain.csv
+2025-09-16 19:17:40,726 - INFO - Unique labels in final_hatexplain.csv: ['normal' 'offensive' 'hatespeech']
+2025-09-16 19:17:40,761 - INFO - Loaded 20109 samples from datasets/cyberbullying/final_hateXplain.csv
+2025-09-16 19:17:40,762 - INFO - Loading dataset: datasets/cyberbullying/aggression_parsed_dataset.csv
+2025-09-16 19:17:41,458 - INFO - Loaded 115864 samples from datasets/cyberbullying/aggression_parsed_dataset.csv
+2025-09-16 19:17:41,458 - INFO - Loading dataset: datasets/cyberbullying/attack_parsed_dataset.csv
+2025-09-16 19:17:42,149 - INFO - Loaded 115864 samples from datasets/cyberbullying/attack_parsed_dataset.csv
+2025-09-16 19:17:42,150 - INFO - Loading dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv
+2025-09-16 19:17:43,100 - INFO - Loaded 159686 samples from datasets/cyberbullying/toxicity_parsed_dataset.csv
+2025-09-16 19:17:43,100 - INFO - Loading dataset: datasets/cyberbullying/twitter_parsed_dataset.csv
+2025-09-16 19:17:43,156 - ERROR - Error standardizing dataset datasets/cyberbullying/twitter_parsed_dataset.csv: 'label'
+2025-09-16 19:17:43,157 - INFO - Loading dataset: datasets/cyberbullying/twitter_racism_parsed_dataset.csv
+2025-09-16 19:17:43,218 - ERROR - Error standardizing dataset datasets/cyberbullying/twitter_racism_parsed_dataset.csv: 'label'
+2025-09-16 19:17:43,218 - INFO - Loading dataset: datasets/cyberbullying/twitter_sexism_parsed_dataset.csv
+2025-09-16 19:17:43,296 - ERROR - Error standardizing dataset datasets/cyberbullying/twitter_sexism_parsed_dataset.csv: 'label'
+2025-09-16 19:17:43,297 - INFO - Loading dataset: datasets/cyberbullying/youtube_parsed_dataset.csv
+2025-09-16 19:17:43,349 - INFO - Loaded 3464 samples from datasets/cyberbullying/youtube_parsed_dataset.csv
+2025-09-16 19:17:43,349 - INFO - Loading dataset: datasets/cyberbullying/kaggle_parsed_dataset.csv
+2025-09-16 19:17:43,388 - INFO - Loaded 8799 samples from datasets/cyberbullying/kaggle_parsed_dataset.csv
+2025-09-16 19:18:06,654 - INFO - Final dataset size: 470929
+2025-09-16 19:18:06,658 - INFO - Label distribution: [372196  98733]
+2025-09-16 19:18:06,665 - INFO - Dataset Statistics:
+2025-09-16 19:18:06,670 - INFO -   Total samples: 470929
+2025-09-16 19:18:06,706 - INFO -   Positive samples (cyberbullying): 98733
+2025-09-16 19:18:06,743 - INFO -   Negative samples (not cyberbullying): 372196
+2025-09-16 19:18:06,778 - INFO -   Class balance ratio: 0.210
+2025-09-16 19:18:06,839 - INFO - Training model...
+2025-09-16 19:18:06,839 - INFO - This may take several minutes depending on dataset size...
+2025-09-16 19:18:06,992 - INFO - Training cyberbullying detection model...
+2025-09-16 19:19:53,480 - INFO - Model accuracy: 0.7524
+2025-09-16 19:19:53,640 - INFO - Classification report:
+              precision    recall  f1-score   support
+
+           0       0.95      0.72      0.82     74439
+           1       0.45      0.86      0.59     19747
+
+    accuracy                           0.75     94186
+   macro avg       0.70      0.79      0.71     94186
+weighted avg       0.85      0.75      0.77     94186
+
+2025-09-16 19:20:18,343 - INFO - Model saved to backend/models/cyberbullying/cyberbullying_model.pkl
+2025-09-16 19:20:18,533 - INFO - Training completed!
+2025-09-16 19:20:18,534 - INFO - ========================================
+2025-09-16 19:20:18,534 - INFO - RESULTS:
+2025-09-16 19:20:18,535 - INFO - ========================================
+2025-09-16 19:20:18,535 - INFO - Model accuracy: 0.7524
+2025-09-16 19:20:18,535 - INFO - Confusion Matrix:
+2025-09-16 19:20:18,535 - INFO -   True Negatives:  53802
+2025-09-16 19:20:18,535 - INFO -   False Positives: 20637
+2025-09-16 19:20:18,536 - INFO -   False Negatives: 2687
+2025-09-16 19:20:18,536 - INFO -   True Positives:  17060
+2025-09-16 19:20:18,536 - INFO - Precision: 0.4526
+2025-09-16 19:20:18,536 - INFO - Recall: 0.8639
+2025-09-16 19:20:18,537 - INFO - F1-Score: 0.5940
+2025-09-16 19:20:18,537 - INFO - 
+Top 10 most important features:
+2025-09-16 19:20:18,537 - INFO -    1. article              (0.0411)
+2025-09-16 19:20:18,537 - INFO -    2. fuck                 (0.0333)
+2025-09-16 19:20:18,538 - INFO -    3. page                 (0.0268)
+2025-09-16 19:20:18,538 - INFO -    4. fucking              (0.0251)
+2025-09-16 19:20:18,538 - INFO -    5. school               (0.0233)
+2025-09-16 19:20:18,538 - INFO -    6. nigger               (0.0219)
+2025-09-16 19:20:18,539 - INFO -    7. gay                  (0.0203)
+2025-09-16 19:20:18,540 - INFO -    8. section              (0.0160)
+2025-09-16 19:20:18,542 - INFO -    9. bitch                (0.0158)
+2025-09-16 19:20:18,543 - INFO -   10. shit                 (0.0147)
+2025-09-16 19:20:18,543 - INFO - 
+Model saved to: backend/models/cyberbullying/
+2025-09-16 19:20:18,544 - INFO - 
+========================================
+2025-09-16 19:20:18,545 - INFO - TESTING MODEL WITH SAMPLE TEXTS
+2025-09-16 19:20:18,545 - INFO - ========================================
+2025-09-16 19:20:19,881 - INFO - Transformer model loaded successfully
+2025-09-16 19:20:32,320 - INFO - Cyberbullying model loaded successfully
+2025-09-16 19:20:32,629 - INFO -   Text: You're such an amazing person! Keep being awesome!
+2025-09-16 19:20:32,629 - INFO -   Expected: False, Predicted: True
+2025-09-16 19:20:32,630 - INFO -   Confidence: 0.510, Severity: low
+2025-09-16 19:20:32,822 - INFO -   Text: You're so ugly and stupid, nobody likes you
+2025-09-16 19:20:32,822 - INFO -   Expected: True, Predicted: True
+2025-09-16 19:20:32,822 - INFO -   Confidence: 0.544, Severity: high
+2025-09-16 19:20:32,823 - INFO -   Issues detected: personal_attacks
+2025-09-16 19:20:33,051 - INFO -   Text: Just had a great day at the park with friends
+2025-09-16 19:20:33,051 - INFO -   Expected: False, Predicted: True
+2025-09-16 19:20:33,051 - INFO -   Confidence: 0.510, Severity: low
+2025-09-16 19:20:33,191 - INFO -   Text: Kill yourself, you worthless piece of trash
+2025-09-16 19:20:33,191 - INFO -   Expected: True, Predicted: True
+2025-09-16 19:20:33,191 - INFO -   Confidence: 0.515, Severity: critical
+2025-09-16 19:20:33,191 - INFO -   Issues detected: threats, personal_attacks
+2025-09-16 19:20:33,415 - INFO -   Text: Hey, how are you doing today? Hope you're well!
+2025-09-16 19:20:33,416 - INFO -   Expected: False, Predicted: True
+2025-09-16 19:20:33,416 - INFO -   Confidence: 0.510, Severity: low
+2025-09-16 19:20:33,648 - INFO -   Text: I hate you so much, go die!
+2025-09-16 19:20:33,649 - INFO -   Expected: True, Predicted: True
+2025-09-16 19:20:33,649 - INFO -   Confidence: 0.523, Severity: critical
+2025-09-16 19:20:33,649 - INFO -   Issues detected: threats
+2025-09-16 19:20:33,863 - INFO -   Text: Looking forward to the weekend
+2025-09-16 19:20:33,863 - INFO -   Expected: False, Predicted: True
+2025-09-16 19:20:33,863 - INFO -   Confidence: 0.510, Severity: low
+2025-09-16 19:20:34,107 - INFO -   Text: You fat loser, you should just disappear
+2025-09-16 19:20:34,107 - INFO -   Expected: True, Predicted: True
+2025-09-16 19:20:34,107 - INFO -   Confidence: 0.518, Severity: high
+2025-09-16 19:20:34,108 - INFO -   Issues detected: personal_attacks
+2025-09-16 19:20:34,108 - INFO - 
+Test Results: 4/8 correct (50.0%)
+2025-09-16 19:33:34,471 - INFO - Starting Cyberbullying Detection Model Training
+2025-09-16 19:33:34,472 - INFO - ============================================================
+2025-09-16 19:33:39,187 - INFO - Setting up NLTK data...
+2025-09-16 19:33:39,189 - INFO - [OK] NLTK punkt already available
+2025-09-16 19:33:39,190 - INFO - [OK] NLTK stopwords already available
+2025-09-16 19:33:39,193 - INFO - Downloading NLTK data: wordnet
+2025-09-16 19:33:41,940 - INFO - [OK] Downloaded wordnet
+2025-09-16 19:33:41,945 - INFO - Downloading NLTK data: omw-1.4
+2025-09-16 19:33:42,069 - INFO - [OK] Downloaded omw-1.4
+2025-09-16 19:33:42,070 - INFO - NLTK data setup completed
+2025-09-16 19:33:42,085 - INFO - [OK] Found dataset: datasets/cyberbullying/cyberbullying_tweets.csv (6.8 MB)
+2025-09-16 19:33:42,098 - INFO - [OK] Found dataset: datasets/cyberbullying/final_hateXplain.csv (3.6 MB)
+2025-09-16 19:33:42,109 - INFO - [OK] Found dataset: datasets/cyberbullying/aggression_parsed_dataset.csv (48.1 MB)
+2025-09-16 19:33:42,120 - INFO - [OK] Found dataset: datasets/cyberbullying/attack_parsed_dataset.csv (48.0 MB)
+2025-09-16 19:33:42,130 - INFO - [OK] Found dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv (63.6 MB)
+2025-09-16 19:33:42,141 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_parsed_dataset.csv (2.4 MB)
+2025-09-16 19:33:42,153 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_racism_parsed_dataset.csv (1.9 MB)
+2025-09-16 19:33:42,165 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_sexism_parsed_dataset.csv (2.1 MB)
+2025-09-16 19:33:42,174 - INFO - [OK] Found dataset: datasets/cyberbullying/youtube_parsed_dataset.csv (3.7 MB)
+2025-09-16 19:33:42,182 - INFO - [OK] Found dataset: datasets/cyberbullying/kaggle_parsed_dataset.csv (1.7 MB)
+2025-09-16 19:33:42,183 - INFO - Found 10 usable datasets
+2025-09-16 19:33:42,184 - INFO - Total dataset size: 181.9 MB
+2025-09-16 19:33:56,415 - INFO - Transformer model loaded successfully
+2025-09-16 19:33:56,416 - INFO - Loading and preprocessing datasets...
+2025-09-16 19:33:56,416 - INFO - Loading dataset: datasets/cyberbullying/cyberbullying_tweets.csv
+2025-09-16 19:33:56,520 - INFO - Dataset cyberbullying_tweets.csv columns: ['tweet_text', 'cyberbullying_type']
+2025-09-16 19:33:56,521 - INFO - Dataset shape: (47692, 2)
+2025-09-16 19:33:56,549 - INFO - Processed cyberbullying_tweets.csv: 47692 samples, labels: {1: 39747, 0: 7945}
+2025-09-16 19:33:56,549 - INFO - Loaded 47692 samples from datasets/cyberbullying/cyberbullying_tweets.csv
+2025-09-16 19:33:56,550 - INFO - Loading dataset: datasets/cyberbullying/final_hateXplain.csv
+2025-09-16 19:33:56,610 - INFO - Dataset final_hatexplain.csv columns: ['comment', 'label', 'Race', 'Religion', 'Gender', 'Sexual Orientation', 'Miscellaneous']
+2025-09-16 19:33:56,610 - INFO - Dataset shape: (20109, 7)
+2025-09-16 19:33:56,613 - INFO - Generic fallback - unique labels: ['normal' 'offensive' 'hatespeech']
+2025-09-16 19:33:56,646 - INFO - Processed final_hatexplain.csv: 20109 samples, labels: {1: 12291, 0: 7818}
+2025-09-16 19:33:56,646 - INFO - Loaded 20109 samples from datasets/cyberbullying/final_hateXplain.csv
+2025-09-16 19:33:56,647 - INFO - Loading dataset: datasets/cyberbullying/aggression_parsed_dataset.csv
+2025-09-16 19:33:57,352 - INFO - Dataset aggression_parsed_dataset.csv columns: ['index', 'Text', 'ed_label_0', 'ed_label_1', 'oh_label']
+2025-09-16 19:33:57,352 - INFO - Dataset shape: (115864, 5)
+2025-09-16 19:33:57,410 - INFO - Processed aggression_parsed_dataset.csv: 115864 samples, labels: {1: 112544, 0: 3320}
+2025-09-16 19:33:57,410 - INFO - Loaded 115864 samples from datasets/cyberbullying/aggression_parsed_dataset.csv
+2025-09-16 19:33:57,410 - INFO - Loading dataset: datasets/cyberbullying/attack_parsed_dataset.csv
+2025-09-16 19:33:58,096 - INFO - Dataset attack_parsed_dataset.csv columns: ['index', 'Text', 'ed_label_0', 'ed_label_1', 'oh_label']
+2025-09-16 19:33:58,096 - INFO - Dataset shape: (115864, 5)
+2025-09-16 19:33:58,151 - INFO - Processed attack_parsed_dataset.csv: 115864 samples, labels: {1: 112808, 0: 3056}
+2025-09-16 19:33:58,152 - INFO - Loaded 115864 samples from datasets/cyberbullying/attack_parsed_dataset.csv
+2025-09-16 19:33:58,152 - INFO - Loading dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv
+2025-09-16 19:33:59,070 - INFO - Dataset toxicity_parsed_dataset.csv columns: ['index', 'Text', 'ed_label_0', 'ed_label_1', 'oh_label']
+2025-09-16 19:33:59,070 - INFO - Dataset shape: (159686, 5)
+2025-09-16 19:33:59,190 - INFO - Processed toxicity_parsed_dataset.csv: 159686 samples, labels: {1: 155215, 0: 4471}
+2025-09-16 19:33:59,191 - INFO - Loaded 159686 samples from datasets/cyberbullying/toxicity_parsed_dataset.csv
+2025-09-16 19:33:59,192 - INFO - Loading dataset: datasets/cyberbullying/twitter_parsed_dataset.csv
+2025-09-16 19:33:59,277 - INFO - Dataset twitter_parsed_dataset.csv columns: ['index', 'id', 'Text', 'Annotation', 'oh_label']
+2025-09-16 19:33:59,277 - INFO - Dataset shape: (16851, 5)
+2025-09-16 19:33:59,287 - INFO - Processed twitter_parsed_dataset.csv: 16850 samples, labels: {0: 11503, 1: 5347}
+2025-09-16 19:33:59,288 - INFO - Loaded 16850 samples from datasets/cyberbullying/twitter_parsed_dataset.csv
+2025-09-16 19:33:59,288 - INFO - Loading dataset: datasets/cyberbullying/twitter_racism_parsed_dataset.csv
+2025-09-16 19:33:59,326 - INFO - Dataset twitter_racism_parsed_dataset.csv columns: ['index', 'id', 'Text', 'Annotation', 'oh_label']
+2025-09-16 19:33:59,327 - INFO - Dataset shape: (13471, 5)
+2025-09-16 19:33:59,340 - INFO - Processed twitter_racism_parsed_dataset.csv: 13471 samples, labels: {0: 11501, 1: 1970}
+2025-09-16 19:33:59,341 - INFO - Loaded 13471 samples from datasets/cyberbullying/twitter_racism_parsed_dataset.csv
+2025-09-16 19:33:59,342 - INFO - Loading dataset: datasets/cyberbullying/twitter_sexism_parsed_dataset.csv
+2025-09-16 19:33:59,417 - INFO - Dataset twitter_sexism_parsed_dataset.csv columns: ['index', 'id', 'Text', 'Annotation', 'oh_label']
+2025-09-16 19:33:59,417 - INFO - Dataset shape: (14881, 5)
+2025-09-16 19:33:59,432 - INFO - Processed twitter_sexism_parsed_dataset.csv: 14880 samples, labels: {0: 11503, 1: 3377}
+2025-09-16 19:33:59,432 - INFO - Loaded 14880 samples from datasets/cyberbullying/twitter_sexism_parsed_dataset.csv
+2025-09-16 19:33:59,433 - INFO - Loading dataset: datasets/cyberbullying/youtube_parsed_dataset.csv
+2025-09-16 19:33:59,517 - INFO - Dataset youtube_parsed_dataset.csv columns: ['index', 'UserIndex', 'Text', 'Number of Comments', 'Number of Subscribers', 'Membership Duration', 'Number of Uploads', 'Profanity in UserID', 'Age', 'oh_label']
+2025-09-16 19:33:59,517 - INFO - Dataset shape: (3464, 10)
+2025-09-16 19:33:59,524 - INFO - Processed youtube_parsed_dataset.csv: 3464 samples, labels: {0: 3047, 1: 417}
+2025-09-16 19:33:59,524 - INFO - Loaded 3464 samples from datasets/cyberbullying/youtube_parsed_dataset.csv
+2025-09-16 19:33:59,525 - INFO - Loading dataset: datasets/cyberbullying/kaggle_parsed_dataset.csv
+2025-09-16 19:33:59,561 - INFO - Dataset kaggle_parsed_dataset.csv columns: ['index', 'oh_label', 'Date', 'Text']
+2025-09-16 19:33:59,561 - INFO - Dataset shape: (8799, 4)
+2025-09-16 19:33:59,571 - INFO - Processed kaggle_parsed_dataset.csv: 8799 samples, labels: {0: 5993, 1: 2806}
+2025-09-16 19:33:59,571 - INFO - Loaded 8799 samples from datasets/cyberbullying/kaggle_parsed_dataset.csv
+2025-09-16 19:34:28,274 - INFO - Original distribution: {1: 446116, 0: 69286}
+2025-09-16 19:34:28,275 - INFO - Final dataset size: 515402
+2025-09-16 19:34:28,279 - INFO - Label distribution: [ 69286 446116]
+2025-09-16 19:34:28,285 - INFO - Dataset Statistics:
+2025-09-16 19:34:28,286 - INFO -   Total samples: 515402
+2025-09-16 19:34:28,322 - INFO -   Positive samples (cyberbullying): 446116
+2025-09-16 19:34:28,356 - INFO -   Negative samples (not cyberbullying): 69286
+2025-09-16 19:34:28,392 - INFO -   Class balance ratio: 0.866
+2025-09-16 19:34:28,461 - INFO - Training model with improved parameters...
+2025-09-16 19:34:28,461 - INFO - This may take several minutes depending on dataset size...
+2025-09-16 19:34:28,620 - INFO - Training cyberbullying detection model with tuned parameters...
+2025-09-16 19:35:25,697 - INFO - Model accuracy: 0.8656
+2025-09-16 19:35:25,822 - INFO - Classification report:
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00     13857
+           1       0.87      1.00      0.93     89224
+
+    accuracy                           0.87    103081
+   macro avg       0.43      0.50      0.46    103081
+weighted avg       0.75      0.87      0.80    103081
+
+2025-09-16 19:35:25,823 - INFO - Precision (reducing false positives): 0.8656
+2025-09-16 19:35:25,823 - INFO - Recall (catching true positives): 1.0000
+2025-09-16 19:35:36,157 - INFO - Model saved to backend/models/cyberbullying/cyberbullying_model.pkl
+2025-09-16 19:35:36,291 - INFO - Training completed!
+2025-09-16 19:35:36,291 - INFO - ========================================
+2025-09-16 19:35:36,292 - INFO - RESULTS:
+2025-09-16 19:35:36,292 - INFO - ========================================
+2025-09-16 19:35:36,292 - INFO - Model accuracy: 0.8656
+2025-09-16 19:35:36,292 - INFO - Precision (reduces false positives): 0.8656
+2025-09-16 19:35:36,293 - INFO - Recall (catches true positives): 1.0000
+2025-09-16 19:35:36,293 - INFO - Confusion Matrix:
+2025-09-16 19:35:36,293 - INFO -   True Negatives:  0
+2025-09-16 19:35:36,293 - INFO -   False Positives: 13857 (reduced)
+2025-09-16 19:35:36,293 - INFO -   False Negatives: 0
+2025-09-16 19:35:36,293 - INFO -   True Positives:  89224
+2025-09-16 19:35:36,293 - INFO - 
+Top 10 most important features:
+2025-09-16 19:35:36,294 - INFO -    1. rt                   (0.0396)
+2025-09-16 19:35:36,294 - INFO -    2. andre                (0.0351)
+2025-09-16 19:35:36,294 - INFO -    3. kat andre            (0.0337)
+2025-09-16 19:35:36,294 - INFO -    4. kat                  (0.0312)
+2025-09-16 19:35:36,294 - INFO -    5. article              (0.0299)
+2025-09-16 19:35:36,295 - INFO -    6. page                 (0.0262)
+2025-09-16 19:35:36,295 - INFO -    7. amp                  (0.0193)
+2025-09-16 19:35:36,295 - INFO -    8. wikipedia            (0.0184)
+2025-09-16 19:35:36,296 - INFO -    9. fucking              (0.0166)
+2025-09-16 19:35:36,296 - INFO -   10. colin                (0.0145)
+2025-09-16 19:35:36,297 - INFO - 
+Model saved to: backend/models/cyberbullying/
+2025-09-16 19:35:36,297 - INFO - 
+========================================
+2025-09-16 19:35:36,297 - INFO - TESTING MODEL WITH SAMPLE TEXTS
+2025-09-16 19:35:36,297 - INFO - ========================================
+2025-09-16 19:35:38,797 - INFO - Transformer model loaded successfully
+2025-09-16 19:35:44,148 - INFO - Cyberbullying model loaded successfully
+2025-09-16 19:35:44,303 - INFO - 
+Test 1: [FAIL] - Positive message
+2025-09-16 19:35:44,303 - INFO -   Text: You're such an amazing person! Keep being awesome!
+2025-09-16 19:35:44,303 - INFO -   Expected: False, Predicted: True
+2025-09-16 19:35:44,304 - INFO -   Confidence: 0.883, Threshold: 0.650
+2025-09-16 19:35:44,304 - INFO -   Severity: high
+2025-09-16 19:35:44,408 - INFO - 
+Test 2: [PASS] - Personal attack
+2025-09-16 19:35:44,408 - INFO -   Text: You're so ugly and stupid, nobody likes you
+2025-09-16 19:35:44,408 - INFO -   Expected: True, Predicted: True
+2025-09-16 19:35:44,408 - INFO -   Confidence: 0.900, Threshold: 0.650
+2025-09-16 19:35:44,409 - INFO -   Severity: high
+2025-09-16 19:35:44,409 - INFO -   Issues detected: personal_attacks
+2025-09-16 19:35:44,501 - INFO - 
+Test 3: [FAIL] - Neutral positive
+2025-09-16 19:35:44,502 - INFO -   Text: Just had a great day at the park with friends
+2025-09-16 19:35:44,502 - INFO -   Expected: False, Predicted: True
+2025-09-16 19:35:44,503 - INFO -   Confidence: 0.900, Threshold: 0.650
+2025-09-16 19:35:44,503 - INFO -   Severity: high
+2025-09-16 19:35:44,617 - INFO - 
+Test 4: [PASS] - Severe threat
+2025-09-16 19:35:44,617 - INFO -   Text: Kill yourself, you worthless piece of trash
+2025-09-16 19:35:44,617 - INFO -   Expected: True, Predicted: True
+2025-09-16 19:35:44,618 - INFO -   Confidence: 0.897, Threshold: 0.650
+2025-09-16 19:35:44,618 - INFO -   Severity: critical
+2025-09-16 19:35:44,618 - INFO -   Issues detected: threats, personal_attacks
+2025-09-16 19:35:44,730 - INFO - 
+Test 5: [FAIL] - Friendly greeting
+2025-09-16 19:35:44,731 - INFO -   Text: Hey, how are you doing today? Hope you're well!
+2025-09-16 19:35:44,731 - INFO -   Expected: False, Predicted: True
+2025-09-16 19:35:44,731 - INFO -   Confidence: 0.898, Threshold: 0.650
+2025-09-16 19:35:44,731 - INFO -   Severity: high
+2025-09-16 19:35:44,827 - INFO - 
+Test 6: [PASS] - Hate speech
+2025-09-16 19:35:44,827 - INFO -   Text: I hate you so much, go die!
+2025-09-16 19:35:44,827 - INFO -   Expected: True, Predicted: True
+2025-09-16 19:35:44,828 - INFO -   Confidence: 0.893, Threshold: 0.650
+2025-09-16 19:35:44,828 - INFO -   Severity: critical
+2025-09-16 19:35:44,828 - INFO -   Issues detected: threats
+2025-09-16 19:35:44,906 - INFO - 
+Test 7: [FAIL] - Casual positive
+2025-09-16 19:35:44,908 - INFO -   Text: Looking forward to the weekend
+2025-09-16 19:35:44,908 - INFO -   Expected: False, Predicted: True
+2025-09-16 19:35:44,908 - INFO -   Confidence: 0.900, Threshold: 0.650
+2025-09-16 19:35:44,908 - INFO -   Severity: high
+2025-09-16 19:35:44,991 - INFO - 
+Test 8: [PASS] - Harassment
+2025-09-16 19:35:44,993 - INFO -   Text: You fat loser, you should just disappear
+2025-09-16 19:35:44,993 - INFO -   Expected: True, Predicted: True
+2025-09-16 19:35:44,993 - INFO -   Confidence: 0.900, Threshold: 0.650
+2025-09-16 19:35:44,993 - INFO -   Severity: high
+2025-09-16 19:35:44,994 - INFO -   Issues detected: personal_attacks
+2025-09-16 19:35:44,994 - INFO - 
+Test Results: 4/8 correct (50.0%)
+2025-09-16 19:35:44,994 - WARNING - [WARNING] Model performance needs improvement
+2025-09-17 14:12:36,283 - INFO - Starting Cyberbullying Detection Model Training
+2025-09-17 14:12:36,283 - INFO - ============================================================
+2025-09-17 14:12:42,673 - INFO - Setting up NLTK data...
+2025-09-17 14:12:42,675 - INFO - [OK] NLTK punkt already available
+2025-09-17 14:12:42,676 - INFO - [OK] NLTK stopwords already available
+2025-09-17 14:12:42,680 - INFO - Downloading NLTK data: wordnet
+2025-09-17 14:12:43,094 - INFO - [OK] Downloaded wordnet
+2025-09-17 14:12:43,097 - INFO - Downloading NLTK data: omw-1.4
+2025-09-17 14:12:43,169 - INFO - [OK] Downloaded omw-1.4
+2025-09-17 14:12:43,169 - INFO - NLTK data setup completed
+2025-09-17 14:12:43,181 - INFO - [OK] Found dataset: datasets/cyberbullying/cyberbullying_tweets.csv (6.8 MB)
+2025-09-17 14:12:43,188 - INFO - [OK] Found dataset: datasets/cyberbullying/final_hateXplain.csv (3.6 MB)
+2025-09-17 14:12:43,196 - INFO - [OK] Found dataset: datasets/cyberbullying/aggression_parsed_dataset.csv (48.1 MB)
+2025-09-17 14:12:43,201 - INFO - [OK] Found dataset: datasets/cyberbullying/attack_parsed_dataset.csv (48.0 MB)
+2025-09-17 14:12:43,208 - INFO - [OK] Found dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv (63.6 MB)
+2025-09-17 14:12:43,217 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_parsed_dataset.csv (2.4 MB)
+2025-09-17 14:12:43,223 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_racism_parsed_dataset.csv (1.9 MB)
+2025-09-17 14:12:43,229 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_sexism_parsed_dataset.csv (2.1 MB)
+2025-09-17 14:12:43,236 - INFO - [OK] Found dataset: datasets/cyberbullying/youtube_parsed_dataset.csv (3.7 MB)
+2025-09-17 14:12:43,242 - INFO - [OK] Found dataset: datasets/cyberbullying/kaggle_parsed_dataset.csv (1.7 MB)
+2025-09-17 14:12:43,242 - INFO - Found 10 usable datasets
+2025-09-17 14:12:43,243 - INFO - Total dataset size: 181.9 MB
+2025-09-17 14:36:00,925 - INFO - Starting Cyberbullying Detection Model Training
+2025-09-17 14:36:00,925 - INFO - ============================================================
+2025-09-17 14:36:15,754 - INFO - Setting up NLTK data...
+2025-09-17 14:36:15,755 - INFO - [OK] NLTK punkt already available
+2025-09-17 14:36:15,758 - INFO - [OK] NLTK stopwords already available
+2025-09-17 14:36:15,801 - INFO - Downloading NLTK data: wordnet
+2025-09-17 14:36:16,020 - INFO - [OK] Downloaded wordnet
+2025-09-17 14:36:16,047 - INFO - Downloading NLTK data: omw-1.4
+2025-09-17 14:36:16,122 - INFO - [OK] Downloaded omw-1.4
+2025-09-17 14:36:16,122 - INFO - NLTK data setup completed
+2025-09-17 14:36:16,159 - INFO - [OK] Found dataset: datasets/cyberbullying/cyberbullying_tweets.csv (6.8 MB)
+2025-09-17 14:36:16,188 - INFO - [OK] Found dataset: datasets/cyberbullying/final_hateXplain.csv (3.6 MB)
+2025-09-17 14:36:16,560 - INFO - [OK] Found dataset: datasets/cyberbullying/aggression_parsed_dataset.csv (48.1 MB)
+2025-09-17 14:36:16,925 - INFO - [OK] Found dataset: datasets/cyberbullying/attack_parsed_dataset.csv (48.0 MB)
+2025-09-17 14:36:16,957 - INFO - [OK] Found dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv (63.6 MB)
+2025-09-17 14:36:16,987 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_parsed_dataset.csv (2.4 MB)
+2025-09-17 14:36:17,093 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_racism_parsed_dataset.csv (1.9 MB)
+2025-09-17 14:36:17,126 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_sexism_parsed_dataset.csv (2.1 MB)
+2025-09-17 14:36:17,157 - INFO - [OK] Found dataset: datasets/cyberbullying/youtube_parsed_dataset.csv (3.7 MB)
+2025-09-17 14:36:17,183 - INFO - [OK] Found dataset: datasets/cyberbullying/kaggle_parsed_dataset.csv (1.7 MB)
+2025-09-17 14:36:17,184 - INFO - Found 10 usable datasets
+2025-09-17 14:36:17,184 - INFO - Total dataset size: 181.9 MB
+2025-09-17 14:36:37,660 - INFO - Transformer model loaded successfully
+2025-09-17 14:36:37,660 - INFO - Loading and preprocessing datasets...
+2025-09-17 14:36:37,660 - INFO - Loading dataset: datasets/cyberbullying/cyberbullying_tweets.csv
+2025-09-17 14:36:37,816 - INFO - Dataset cyberbullying_tweets.csv columns: ['tweet_text', 'cyberbullying_type']
+2025-09-17 14:36:37,816 - INFO - Dataset shape: (47692, 2)
+2025-09-17 14:36:37,864 - INFO - Processed cyberbullying_tweets.csv: 47692 samples, labels: {1: 39747, 0: 7945}
+2025-09-17 14:36:37,865 - INFO - Loaded 47692 samples from datasets/cyberbullying/cyberbullying_tweets.csv
+2025-09-17 14:36:37,865 - INFO - Loading dataset: datasets/cyberbullying/final_hateXplain.csv
+2025-09-17 14:36:37,963 - INFO - Dataset final_hatexplain.csv columns: ['comment', 'label', 'Race', 'Religion', 'Gender', 'Sexual Orientation', 'Miscellaneous']
+2025-09-17 14:36:37,964 - INFO - Dataset shape: (20109, 7)
+2025-09-17 14:36:37,970 - INFO - Generic fallback - unique labels: ['normal' 'offensive' 'hatespeech']
+2025-09-17 14:36:38,027 - INFO - Processed final_hatexplain.csv: 20109 samples, labels: {1: 12291, 0: 7818}
+2025-09-17 14:36:38,028 - INFO - Loaded 20109 samples from datasets/cyberbullying/final_hateXplain.csv
+2025-09-17 14:36:38,029 - INFO - Loading dataset: datasets/cyberbullying/aggression_parsed_dataset.csv
+2025-09-17 14:36:39,200 - INFO - Dataset aggression_parsed_dataset.csv columns: ['index', 'Text', 'ed_label_0', 'ed_label_1', 'oh_label']
+2025-09-17 14:36:39,201 - INFO - Dataset shape: (115864, 5)
+2025-09-17 14:36:39,294 - INFO - Processed aggression_parsed_dataset.csv: 115864 samples, labels: {1: 112544, 0: 3320}
+2025-09-17 14:36:39,295 - INFO - Loaded 115864 samples from datasets/cyberbullying/aggression_parsed_dataset.csv
+2025-09-17 14:36:39,295 - INFO - Loading dataset: datasets/cyberbullying/attack_parsed_dataset.csv
+2025-09-17 14:36:40,460 - INFO - Dataset attack_parsed_dataset.csv columns: ['index', 'Text', 'ed_label_0', 'ed_label_1', 'oh_label']
+2025-09-17 14:36:40,462 - INFO - Dataset shape: (115864, 5)
+2025-09-17 14:36:40,552 - INFO - Processed attack_parsed_dataset.csv: 115864 samples, labels: {1: 112808, 0: 3056}
+2025-09-17 14:36:40,552 - INFO - Loaded 115864 samples from datasets/cyberbullying/attack_parsed_dataset.csv
+2025-09-17 14:36:40,553 - INFO - Loading dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv
+2025-09-17 14:36:42,026 - INFO - Dataset toxicity_parsed_dataset.csv columns: ['index', 'Text', 'ed_label_0', 'ed_label_1', 'oh_label']
+2025-09-17 14:36:42,028 - INFO - Dataset shape: (159686, 5)
+2025-09-17 14:36:42,163 - INFO - Processed toxicity_parsed_dataset.csv: 159686 samples, labels: {1: 155215, 0: 4471}
+2025-09-17 14:36:42,166 - INFO - Loaded 159686 samples from datasets/cyberbullying/toxicity_parsed_dataset.csv
+2025-09-17 14:36:42,167 - INFO - Loading dataset: datasets/cyberbullying/twitter_parsed_dataset.csv
+2025-09-17 14:36:42,270 - INFO - Dataset twitter_parsed_dataset.csv columns: ['index', 'id', 'Text', 'Annotation', 'oh_label']
+2025-09-17 14:36:42,271 - INFO - Dataset shape: (16851, 5)
+2025-09-17 14:36:42,291 - INFO - Processed twitter_parsed_dataset.csv: 16850 samples, labels: {0: 11503, 1: 5347}
+2025-09-17 14:36:42,292 - INFO - Loaded 16850 samples from datasets/cyberbullying/twitter_parsed_dataset.csv
+2025-09-17 14:36:42,292 - INFO - Loading dataset: datasets/cyberbullying/twitter_racism_parsed_dataset.csv
+2025-09-17 14:36:42,349 - INFO - Dataset twitter_racism_parsed_dataset.csv columns: ['index', 'id', 'Text', 'Annotation', 'oh_label']
+2025-09-17 14:36:42,350 - INFO - Dataset shape: (13471, 5)
+2025-09-17 14:36:42,363 - INFO - Processed twitter_racism_parsed_dataset.csv: 13471 samples, labels: {0: 11501, 1: 1970}
+2025-09-17 14:36:42,363 - INFO - Loaded 13471 samples from datasets/cyberbullying/twitter_racism_parsed_dataset.csv
+2025-09-17 14:36:42,364 - INFO - Loading dataset: datasets/cyberbullying/twitter_sexism_parsed_dataset.csv
+2025-09-17 14:36:42,439 - INFO - Dataset twitter_sexism_parsed_dataset.csv columns: ['index', 'id', 'Text', 'Annotation', 'oh_label']
+2025-09-17 14:36:42,439 - INFO - Dataset shape: (14881, 5)
+2025-09-17 14:36:42,456 - INFO - Processed twitter_sexism_parsed_dataset.csv: 14880 samples, labels: {0: 11503, 1: 3377}
+2025-09-17 14:36:42,457 - INFO - Loaded 14880 samples from datasets/cyberbullying/twitter_sexism_parsed_dataset.csv
+2025-09-17 14:36:42,457 - INFO - Loading dataset: datasets/cyberbullying/youtube_parsed_dataset.csv
+2025-09-17 14:36:42,545 - INFO - Dataset youtube_parsed_dataset.csv columns: ['index', 'UserIndex', 'Text', 'Number of Comments', 'Number of Subscribers', 'Membership Duration', 'Number of Uploads', 'Profanity in UserID', 'Age', 'oh_label']
+2025-09-17 14:36:42,546 - INFO - Dataset shape: (3464, 10)
+2025-09-17 14:36:42,554 - INFO - Processed youtube_parsed_dataset.csv: 3464 samples, labels: {0: 3047, 1: 417}
+2025-09-17 14:36:42,556 - INFO - Loaded 3464 samples from datasets/cyberbullying/youtube_parsed_dataset.csv
+2025-09-17 14:36:42,557 - INFO - Loading dataset: datasets/cyberbullying/kaggle_parsed_dataset.csv
+2025-09-17 14:36:42,606 - INFO - Dataset kaggle_parsed_dataset.csv columns: ['index', 'oh_label', 'Date', 'Text']
+2025-09-17 14:36:42,607 - INFO - Dataset shape: (8799, 4)
+2025-09-17 14:36:42,620 - INFO - Processed kaggle_parsed_dataset.csv: 8799 samples, labels: {0: 5993, 1: 2806}
+2025-09-17 14:36:42,621 - INFO - Loaded 8799 samples from datasets/cyberbullying/kaggle_parsed_dataset.csv
+2025-09-17 14:37:10,588 - INFO - Original distribution: {1: 446116, 0: 69286}
+2025-09-17 14:37:10,589 - INFO - Final dataset size: 515402
+2025-09-17 14:37:10,593 - INFO - Label distribution: [ 69286 446116]
+2025-09-17 14:37:10,599 - INFO - Dataset Statistics:
+2025-09-17 14:37:10,605 - INFO -   Total samples: 515402
+2025-09-17 14:37:10,642 - INFO -   Positive samples (cyberbullying): 446116
+2025-09-17 14:37:10,679 - INFO -   Negative samples (not cyberbullying): 69286
+2025-09-17 14:37:10,716 - INFO -   Class balance ratio: 0.866
+2025-09-17 14:37:10,798 - INFO - Training model with improved parameters...
+2025-09-17 14:37:10,798 - INFO - This may take several minutes depending on dataset size...
+2025-09-17 14:37:10,966 - INFO - Training cyberbullying detection model with tuned parameters...
+2025-09-17 14:38:36,619 - INFO - Starting Cyberbullying Detection Model Training
+2025-09-17 14:38:36,619 - INFO - ============================================================
+2025-09-17 14:39:15,747 - INFO - Setting up NLTK data...
+2025-09-17 14:39:15,749 - INFO - [OK] NLTK punkt already available
+2025-09-17 14:39:15,750 - INFO - [OK] NLTK stopwords already available
+2025-09-17 14:39:15,753 - INFO - Downloading NLTK data: wordnet
+2025-09-17 14:39:16,001 - INFO - [OK] Downloaded wordnet
+2025-09-17 14:39:16,004 - INFO - Downloading NLTK data: omw-1.4
+2025-09-17 14:39:16,093 - INFO - [OK] Downloaded omw-1.4
+2025-09-17 14:39:16,093 - INFO - NLTK data setup completed
+2025-09-17 14:39:16,110 - INFO - [OK] Found dataset: datasets/cyberbullying/cyberbullying_tweets.csv (6.8 MB)
+2025-09-17 14:39:16,121 - INFO - [OK] Found dataset: datasets/cyberbullying/final_hateXplain.csv (3.6 MB)
+2025-09-17 14:39:16,130 - INFO - [OK] Found dataset: datasets/cyberbullying/aggression_parsed_dataset.csv (48.1 MB)
+2025-09-17 14:39:16,138 - INFO - [OK] Found dataset: datasets/cyberbullying/attack_parsed_dataset.csv (48.0 MB)
+2025-09-17 14:39:16,143 - INFO - [OK] Found dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv (63.6 MB)
+2025-09-17 14:39:16,149 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_parsed_dataset.csv (2.4 MB)
+2025-09-17 14:39:16,156 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_racism_parsed_dataset.csv (1.9 MB)
+2025-09-17 14:39:16,163 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_sexism_parsed_dataset.csv (2.1 MB)
+2025-09-17 14:39:16,169 - INFO - [OK] Found dataset: datasets/cyberbullying/youtube_parsed_dataset.csv (3.7 MB)
+2025-09-17 14:39:16,174 - INFO - [OK] Found dataset: datasets/cyberbullying/kaggle_parsed_dataset.csv (1.7 MB)
+2025-09-17 14:39:16,174 - INFO - Found 10 usable datasets
+2025-09-17 14:39:16,175 - INFO - Total dataset size: 181.9 MB
+2025-09-17 14:39:38,329 - WARNING - From C:\Users\yesha\Desktop\threat_det\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+2025-09-17 14:39:39,913 - INFO - Transformer model loaded successfully
+2025-09-17 14:39:39,914 - INFO - Loading and preprocessing datasets...
+2025-09-17 14:39:39,914 - INFO - Loading dataset: datasets/cyberbullying/cyberbullying_tweets.csv
+2025-09-17 14:39:40,002 - INFO - Dataset cyberbullying_tweets.csv columns: ['tweet_text', 'cyberbullying_type']
+2025-09-17 14:39:40,003 - INFO - Dataset shape: (47692, 2)
+2025-09-17 14:39:40,037 - INFO - Processed cyberbullying_tweets.csv: 47692 samples, labels: {1: 39747, 0: 7945}
+2025-09-17 14:39:40,037 - INFO - Loaded 47692 samples from datasets/cyberbullying/cyberbullying_tweets.csv
+2025-09-17 14:39:40,038 - INFO - Loading dataset: datasets/cyberbullying/final_hateXplain.csv
+2025-09-17 14:39:40,091 - INFO - Dataset final_hatexplain.csv columns: ['comment', 'label', 'Race', 'Religion', 'Gender', 'Sexual Orientation', 'Miscellaneous']
+2025-09-17 14:39:40,092 - INFO - Dataset shape: (20109, 7)
+2025-09-17 14:39:40,096 - INFO - Generic fallback - unique labels: ['normal' 'offensive' 'hatespeech']
+2025-09-17 14:39:40,130 - INFO - Processed final_hatexplain.csv: 20109 samples, labels: {1: 12291, 0: 7818}
+2025-09-17 14:39:40,130 - INFO - Loaded 20109 samples from datasets/cyberbullying/final_hateXplain.csv
+2025-09-17 14:39:40,130 - INFO - Loading dataset: datasets/cyberbullying/aggression_parsed_dataset.csv
+2025-09-17 14:39:40,746 - INFO - Dataset aggression_parsed_dataset.csv columns: ['index', 'Text', 'ed_label_0', 'ed_label_1', 'oh_label']
+2025-09-17 14:39:40,746 - INFO - Dataset shape: (115864, 5)
+2025-09-17 14:39:40,800 - INFO - Processed aggression_parsed_dataset.csv: 115864 samples, labels: {1: 112544, 0: 3320}
+2025-09-17 14:39:40,800 - INFO - Loaded 115864 samples from datasets/cyberbullying/aggression_parsed_dataset.csv
+2025-09-17 14:39:40,800 - INFO - Loading dataset: datasets/cyberbullying/attack_parsed_dataset.csv
+2025-09-17 14:39:41,477 - INFO - Dataset attack_parsed_dataset.csv columns: ['index', 'Text', 'ed_label_0', 'ed_label_1', 'oh_label']
+2025-09-17 14:39:41,478 - INFO - Dataset shape: (115864, 5)
+2025-09-17 14:39:41,531 - INFO - Processed attack_parsed_dataset.csv: 115864 samples, labels: {1: 112808, 0: 3056}
+2025-09-17 14:39:41,532 - INFO - Loaded 115864 samples from datasets/cyberbullying/attack_parsed_dataset.csv
+2025-09-17 14:39:41,532 - INFO - Loading dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv
+2025-09-17 14:39:42,337 - INFO - Dataset toxicity_parsed_dataset.csv columns: ['index', 'Text', 'ed_label_0', 'ed_label_1', 'oh_label']
+2025-09-17 14:39:42,337 - INFO - Dataset shape: (159686, 5)
+2025-09-17 14:39:42,421 - INFO - Processed toxicity_parsed_dataset.csv: 159686 samples, labels: {1: 155215, 0: 4471}
+2025-09-17 14:39:42,421 - INFO - Loaded 159686 samples from datasets/cyberbullying/toxicity_parsed_dataset.csv
+2025-09-17 14:39:42,422 - INFO - Loading dataset: datasets/cyberbullying/twitter_parsed_dataset.csv
+2025-09-17 14:39:42,469 - INFO - Dataset twitter_parsed_dataset.csv columns: ['index', 'id', 'Text', 'Annotation', 'oh_label']
+2025-09-17 14:39:42,470 - INFO - Dataset shape: (16851, 5)
+2025-09-17 14:39:42,483 - INFO - Processed twitter_parsed_dataset.csv: 16850 samples, labels: {0: 11503, 1: 5347}
+2025-09-17 14:39:42,484 - INFO - Loaded 16850 samples from datasets/cyberbullying/twitter_parsed_dataset.csv
+2025-09-17 14:39:42,484 - INFO - Loading dataset: datasets/cyberbullying/twitter_racism_parsed_dataset.csv
+2025-09-17 14:39:42,522 - INFO - Dataset twitter_racism_parsed_dataset.csv columns: ['index', 'id', 'Text', 'Annotation', 'oh_label']
+2025-09-17 14:39:42,523 - INFO - Dataset shape: (13471, 5)
+2025-09-17 14:39:42,531 - INFO - Processed twitter_racism_parsed_dataset.csv: 13471 samples, labels: {0: 11501, 1: 1970}
+2025-09-17 14:39:42,532 - INFO - Loaded 13471 samples from datasets/cyberbullying/twitter_racism_parsed_dataset.csv
+2025-09-17 14:39:42,532 - INFO - Loading dataset: datasets/cyberbullying/twitter_sexism_parsed_dataset.csv
+2025-09-17 14:39:42,575 - INFO - Dataset twitter_sexism_parsed_dataset.csv columns: ['index', 'id', 'Text', 'Annotation', 'oh_label']
+2025-09-17 14:39:42,575 - INFO - Dataset shape: (14881, 5)
+2025-09-17 14:39:42,584 - INFO - Processed twitter_sexism_parsed_dataset.csv: 14880 samples, labels: {0: 11503, 1: 3377}
+2025-09-17 14:39:42,585 - INFO - Loaded 14880 samples from datasets/cyberbullying/twitter_sexism_parsed_dataset.csv
+2025-09-17 14:39:42,585 - INFO - Loading dataset: datasets/cyberbullying/youtube_parsed_dataset.csv
+2025-09-17 14:39:42,633 - INFO - Dataset youtube_parsed_dataset.csv columns: ['index', 'UserIndex', 'Text', 'Number of Comments', 'Number of Subscribers', 'Membership Duration', 'Number of Uploads', 'Profanity in UserID', 'Age', 'oh_label']
+2025-09-17 14:39:42,633 - INFO - Dataset shape: (3464, 10)
+2025-09-17 14:39:42,638 - INFO - Processed youtube_parsed_dataset.csv: 3464 samples, labels: {0: 3047, 1: 417}
+2025-09-17 14:39:42,638 - INFO - Loaded 3464 samples from datasets/cyberbullying/youtube_parsed_dataset.csv
+2025-09-17 14:39:42,638 - INFO - Loading dataset: datasets/cyberbullying/kaggle_parsed_dataset.csv
+2025-09-17 14:39:42,664 - INFO - Dataset kaggle_parsed_dataset.csv columns: ['index', 'oh_label', 'Date', 'Text']
+2025-09-17 14:39:42,665 - INFO - Dataset shape: (8799, 4)
+2025-09-17 14:39:42,672 - INFO - Processed kaggle_parsed_dataset.csv: 8799 samples, labels: {0: 5993, 1: 2806}
+2025-09-17 14:39:42,672 - INFO - Loaded 8799 samples from datasets/cyberbullying/kaggle_parsed_dataset.csv
+2025-09-17 14:40:07,092 - INFO - Original distribution: {1: 446116, 0: 69286}
+2025-09-17 14:40:07,092 - INFO - Final dataset size: 515402
+2025-09-17 14:40:07,095 - INFO - Label distribution: [ 69286 446116]
+2025-09-17 14:40:07,101 - INFO - Dataset Statistics:
+2025-09-17 14:40:07,102 - INFO -   Total samples: 515402
+2025-09-17 14:40:07,149 - INFO -   Positive samples (cyberbullying): 446116
+2025-09-17 14:40:07,185 - INFO -   Negative samples (not cyberbullying): 69286
+2025-09-17 14:40:07,224 - INFO -   Class balance ratio: 0.866
+2025-09-17 14:40:07,312 - INFO - Training model with improved parameters...
+2025-09-17 14:40:07,313 - INFO - This may take several minutes depending on dataset size...
+2025-09-17 14:40:07,547 - INFO - Training cyberbullying detection model with tuned parameters...
+2025-09-17 14:41:02,808 - INFO - Model accuracy: 0.8656
+2025-09-17 14:41:02,852 - INFO - Classification report:
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00     13857
+           1       0.87      1.00      0.93     89224
+
+    accuracy                           0.87    103081
+   macro avg       0.43      0.50      0.46    103081
+weighted avg       0.75      0.87      0.80    103081
+
+2025-09-17 14:41:02,853 - INFO - Precision (reducing false positives): 0.8656
+2025-09-17 14:41:02,854 - INFO - Recall (catching true positives): 1.0000
+2025-09-17 14:41:03,079 - INFO - Model saved to backend/models/cyberbullying/cyberbullying_model.pkl
+2025-09-17 14:41:03,222 - INFO - Training completed!
+2025-09-17 14:41:03,223 - INFO - ========================================
+2025-09-17 14:41:03,223 - INFO - RESULTS:
+2025-09-17 14:41:03,224 - INFO - ========================================
+2025-09-17 14:41:03,224 - INFO - Model accuracy: 0.8656
+2025-09-17 14:41:03,224 - INFO - Precision (reduces false positives): 0.8656
+2025-09-17 14:41:03,224 - INFO - Recall (catches true positives): 1.0000
+2025-09-17 14:41:03,225 - INFO - Confusion Matrix:
+2025-09-17 14:41:03,225 - INFO -   True Negatives:  0
+2025-09-17 14:41:03,225 - INFO -   False Positives: 13857 (reduced)
+2025-09-17 14:41:03,225 - INFO -   False Negatives: 0
+2025-09-17 14:41:03,226 - INFO -   True Positives:  89224
+2025-09-17 14:41:03,226 - INFO - 
+Top 10 most important features:
+2025-09-17 14:41:03,226 - INFO -    1. rt                   (0.0438)
+2025-09-17 14:41:03,226 - INFO -    2. andre                (0.0338)
+2025-09-17 14:41:03,227 - INFO -    3. fuck                 (0.0292)
+2025-09-17 14:41:03,227 - INFO -    4. fucking              (0.0270)
+2025-09-17 14:41:03,228 - INFO -    5. page                 (0.0241)
+2025-09-17 14:41:03,228 - INFO -    6. kat                  (0.0236)
+2025-09-17 14:41:03,229 - INFO -    7. kat andre            (0.0233)
+2025-09-17 14:41:03,229 - INFO -    8. article              (0.0214)
+2025-09-17 14:41:03,230 - INFO -    9. wikipedia            (0.0179)
+2025-09-17 14:41:03,231 - INFO -   10. amp                  (0.0177)
+2025-09-17 14:41:03,231 - INFO - 
+Model saved to: backend/models/cyberbullying/
+2025-09-17 14:41:03,232 - INFO - 
+========================================
+2025-09-17 14:41:03,234 - INFO - TESTING MODEL WITH SAMPLE TEXTS
+2025-09-17 14:41:03,234 - INFO - ========================================
+2025-09-17 14:41:04,284 - INFO - Transformer model loaded successfully
+2025-09-17 14:41:04,404 - INFO - Cyberbullying model loaded successfully
+2025-09-17 14:41:04,693 - INFO - 
+Test 1: [FAIL] - Positive message
+2025-09-17 14:41:04,693 - INFO -   Text: You're such an amazing person! Keep being awesome!
+2025-09-17 14:41:04,694 - INFO -   Expected: False, Predicted: True
+2025-09-17 14:41:04,694 - INFO -   Confidence: 0.885, Threshold: 0.650
+2025-09-17 14:41:04,694 - INFO -   Severity: high
+2025-09-17 14:41:04,766 - INFO - 
+Test 2: [PASS] - Personal attack
+2025-09-17 14:41:04,766 - INFO -   Text: You're so ugly and stupid, nobody likes you
+2025-09-17 14:41:04,767 - INFO -   Expected: True, Predicted: True
+2025-09-17 14:41:04,767 - INFO -   Confidence: 0.898, Threshold: 0.650
+2025-09-17 14:41:04,767 - INFO -   Severity: high
+2025-09-17 14:41:04,767 - INFO -   Issues detected: personal_attacks
+2025-09-17 14:41:04,857 - INFO - 
+Test 3: [FAIL] - Neutral positive
+2025-09-17 14:41:04,857 - INFO -   Text: Just had a great day at the park with friends
+2025-09-17 14:41:04,857 - INFO -   Expected: False, Predicted: True
+2025-09-17 14:41:04,858 - INFO -   Confidence: 0.901, Threshold: 0.650
+2025-09-17 14:41:04,858 - INFO -   Severity: high
+2025-09-17 14:41:04,988 - INFO - 
+Test 4: [PASS] - Severe threat
+2025-09-17 14:41:04,989 - INFO -   Text: Kill yourself, you worthless piece of trash
+2025-09-17 14:41:04,989 - INFO -   Expected: True, Predicted: True
+2025-09-17 14:41:04,989 - INFO -   Confidence: 0.899, Threshold: 0.650
+2025-09-17 14:41:04,990 - INFO -   Severity: critical
+2025-09-17 14:41:04,990 - INFO -   Issues detected: threats, personal_attacks
+2025-09-17 14:41:05,085 - INFO - 
+Test 5: [FAIL] - Friendly greeting
+2025-09-17 14:41:05,086 - INFO -   Text: Hey, how are you doing today? Hope you're well!
+2025-09-17 14:41:05,086 - INFO -   Expected: False, Predicted: True
+2025-09-17 14:41:05,087 - INFO -   Confidence: 0.900, Threshold: 0.650
+2025-09-17 14:41:05,087 - INFO -   Severity: high
+2025-09-17 14:41:05,262 - INFO - 
+Test 6: [PASS] - Hate speech
+2025-09-17 14:41:05,262 - INFO -   Text: I hate you so much, go die!
+2025-09-17 14:41:05,263 - INFO -   Expected: True, Predicted: True
+2025-09-17 14:41:05,263 - INFO -   Confidence: 0.896, Threshold: 0.650
+2025-09-17 14:41:05,263 - INFO -   Severity: critical
+2025-09-17 14:41:05,263 - INFO -   Issues detected: threats
+2025-09-17 14:41:05,335 - INFO - 
+Test 7: [FAIL] - Casual positive
+2025-09-17 14:41:05,336 - INFO -   Text: Looking forward to the weekend
+2025-09-17 14:41:05,336 - INFO -   Expected: False, Predicted: True
+2025-09-17 14:41:05,336 - INFO -   Confidence: 0.900, Threshold: 0.650
+2025-09-17 14:41:05,337 - INFO -   Severity: high
+2025-09-17 14:41:05,474 - INFO - 
+Test 8: [PASS] - Harassment
+2025-09-17 14:41:05,474 - INFO -   Text: You fat loser, you should just disappear
+2025-09-17 14:41:05,475 - INFO -   Expected: True, Predicted: True
+2025-09-17 14:41:05,475 - INFO -   Confidence: 0.901, Threshold: 0.650
+2025-09-17 14:41:05,475 - INFO -   Severity: high
+2025-09-17 14:41:05,476 - INFO -   Issues detected: personal_attacks
+2025-09-17 14:41:05,476 - INFO - 
+Test Results: 4/8 correct (50.0%)
+2025-09-17 14:41:05,476 - WARNING - [WARNING] Model performance needs improvement
+2025-09-17 14:49:09,910 - INFO - Starting Cyberbullying Detection Model Training
+2025-09-17 14:49:09,911 - INFO - ============================================================
+2025-09-17 14:49:15,549 - INFO - Setting up NLTK data...
+2025-09-17 14:49:15,550 - INFO - [OK] NLTK punkt already available
+2025-09-17 14:49:15,551 - INFO - [OK] NLTK stopwords already available
+2025-09-17 14:49:15,554 - INFO - Downloading NLTK data: wordnet
+2025-09-17 14:49:15,802 - INFO - [OK] Downloaded wordnet
+2025-09-17 14:49:15,805 - INFO - Downloading NLTK data: omw-1.4
+2025-09-17 14:49:15,884 - INFO - [OK] Downloaded omw-1.4
+2025-09-17 14:49:15,885 - INFO - NLTK data setup completed
+2025-09-17 14:49:15,893 - INFO - [OK] Found dataset: datasets/cyberbullying/cyberbullying_tweets.csv (6.8 MB)
+2025-09-17 14:49:15,900 - INFO - [OK] Found dataset: datasets/cyberbullying/final_hateXplain.csv (3.6 MB)
+2025-09-17 14:49:15,906 - INFO - [OK] Found dataset: datasets/cyberbullying/aggression_parsed_dataset.csv (48.1 MB)
+2025-09-17 14:49:15,912 - INFO - [OK] Found dataset: datasets/cyberbullying/attack_parsed_dataset.csv (48.0 MB)
+2025-09-17 14:49:15,918 - INFO - [OK] Found dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv (63.6 MB)
+2025-09-17 14:49:15,925 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_parsed_dataset.csv (2.4 MB)
+2025-09-17 14:49:15,932 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_racism_parsed_dataset.csv (1.9 MB)
+2025-09-17 14:49:15,939 - INFO - [OK] Found dataset: datasets/cyberbullying/twitter_sexism_parsed_dataset.csv (2.1 MB)
+2025-09-17 14:49:15,943 - INFO - [OK] Found dataset: datasets/cyberbullying/youtube_parsed_dataset.csv (3.7 MB)
+2025-09-17 14:49:15,948 - INFO - [OK] Found dataset: datasets/cyberbullying/kaggle_parsed_dataset.csv (1.7 MB)
+2025-09-17 14:49:15,949 - INFO - Found 10 usable datasets
+2025-09-17 14:49:15,949 - INFO - Total dataset size: 181.9 MB
+2025-09-17 14:49:27,667 - WARNING - From C:\Users\yesha\Desktop\threat_det\venv\Lib\site-packages\tf_keras\src\losses.py:2976: The name tf.losses.sparse_softmax_cross_entropy is deprecated. Please use tf.compat.v1.losses.sparse_softmax_cross_entropy instead.
+
+2025-09-17 14:49:28,591 - INFO - Transformer model loaded successfully
+2025-09-17 14:49:28,591 - INFO - Loading and preprocessing datasets...
+2025-09-17 14:49:28,592 - INFO - Loading dataset: datasets/cyberbullying/cyberbullying_tweets.csv
+2025-09-17 14:49:28,678 - INFO - Dataset cyberbullying_tweets.csv columns: ['tweet_text', 'cyberbullying_type']
+2025-09-17 14:49:28,679 - INFO - Dataset shape: (47692, 2)
+2025-09-17 14:49:28,702 - INFO - Processed cyberbullying_tweets.csv: 47692 samples, labels: {1: 39747, 0: 7945}
+2025-09-17 14:49:28,702 - INFO - Loaded 47692 samples from datasets/cyberbullying/cyberbullying_tweets.csv
+2025-09-17 14:49:28,702 - INFO - Loading dataset: datasets/cyberbullying/final_hateXplain.csv
+2025-09-17 14:49:28,761 - INFO - Dataset final_hatexplain.csv columns: ['comment', 'label', 'Race', 'Religion', 'Gender', 'Sexual Orientation', 'Miscellaneous']
+2025-09-17 14:49:28,761 - INFO - Dataset shape: (20109, 7)
+2025-09-17 14:49:28,764 - INFO - Generic fallback - unique labels: ['normal' 'offensive' 'hatespeech']
+2025-09-17 14:49:28,789 - INFO - Processed final_hatexplain.csv: 20109 samples, labels: {1: 12291, 0: 7818}
+2025-09-17 14:49:28,791 - INFO - Loaded 20109 samples from datasets/cyberbullying/final_hateXplain.csv
+2025-09-17 14:49:28,791 - INFO - Loading dataset: datasets/cyberbullying/aggression_parsed_dataset.csv
+2025-09-17 14:49:29,415 - INFO - Dataset aggression_parsed_dataset.csv columns: ['index', 'Text', 'ed_label_0', 'ed_label_1', 'oh_label']
+2025-09-17 14:49:29,415 - INFO - Dataset shape: (115864, 5)
+2025-09-17 14:49:29,465 - INFO - Processed aggression_parsed_dataset.csv: 115864 samples, labels: {1: 112544, 0: 3320}
+2025-09-17 14:49:29,465 - INFO - Loaded 115864 samples from datasets/cyberbullying/aggression_parsed_dataset.csv
+2025-09-17 14:49:29,466 - INFO - Loading dataset: datasets/cyberbullying/attack_parsed_dataset.csv
+2025-09-17 14:49:30,096 - INFO - Dataset attack_parsed_dataset.csv columns: ['index', 'Text', 'ed_label_0', 'ed_label_1', 'oh_label']
+2025-09-17 14:49:30,097 - INFO - Dataset shape: (115864, 5)
+2025-09-17 14:49:30,150 - INFO - Processed attack_parsed_dataset.csv: 115864 samples, labels: {1: 112808, 0: 3056}
+2025-09-17 14:49:30,151 - INFO - Loaded 115864 samples from datasets/cyberbullying/attack_parsed_dataset.csv
+2025-09-17 14:49:30,151 - INFO - Loading dataset: datasets/cyberbullying/toxicity_parsed_dataset.csv
+2025-09-17 14:49:31,015 - INFO - Dataset toxicity_parsed_dataset.csv columns: ['index', 'Text', 'ed_label_0', 'ed_label_1', 'oh_label']
+2025-09-17 14:49:31,016 - INFO - Dataset shape: (159686, 5)
+2025-09-17 14:49:31,109 - INFO - Processed toxicity_parsed_dataset.csv: 159686 samples, labels: {1: 155215, 0: 4471}
+2025-09-17 14:49:31,110 - INFO - Loaded 159686 samples from datasets/cyberbullying/toxicity_parsed_dataset.csv
+2025-09-17 14:49:31,110 - INFO - Loading dataset: datasets/cyberbullying/twitter_parsed_dataset.csv
+2025-09-17 14:49:31,164 - INFO - Dataset twitter_parsed_dataset.csv columns: ['index', 'id', 'Text', 'Annotation', 'oh_label']
+2025-09-17 14:49:31,165 - INFO - Dataset shape: (16851, 5)
+2025-09-17 14:49:31,167 - INFO - Unique values in Annotation: ['none' 'sexism' 'racism' nan]
+2025-09-17 14:49:31,204 - INFO - Processed twitter_parsed_dataset.csv: 16850 samples, labels: {0: 11501, 1: 5349}
+2025-09-17 14:49:31,205 - INFO - Loaded 16850 samples from datasets/cyberbullying/twitter_parsed_dataset.csv
+2025-09-17 14:49:31,205 - INFO - Loading dataset: datasets/cyberbullying/twitter_racism_parsed_dataset.csv
+2025-09-17 14:49:31,245 - INFO - Dataset twitter_racism_parsed_dataset.csv columns: ['index', 'id', 'Text', 'Annotation', 'oh_label']
+2025-09-17 14:49:31,245 - INFO - Dataset shape: (13471, 5)
+2025-09-17 14:49:31,247 - INFO - Unique values in Annotation: ['racism' 'none']
+2025-09-17 14:49:31,271 - INFO - Processed twitter_racism_parsed_dataset.csv: 13471 samples, labels: {0: 11501, 1: 1970}
+2025-09-17 14:49:31,272 - INFO - Loaded 13471 samples from datasets/cyberbullying/twitter_racism_parsed_dataset.csv
+2025-09-17 14:49:31,273 - INFO - Loading dataset: datasets/cyberbullying/twitter_sexism_parsed_dataset.csv
+2025-09-17 14:49:31,319 - INFO - Dataset twitter_sexism_parsed_dataset.csv columns: ['index', 'id', 'Text', 'Annotation', 'oh_label']
+2025-09-17 14:49:31,320 - INFO - Dataset shape: (14881, 5)
+2025-09-17 14:49:31,322 - INFO - Unique values in Annotation: ['sexism' 'none' nan]
+2025-09-17 14:49:31,353 - INFO - Processed twitter_sexism_parsed_dataset.csv: 14880 samples, labels: {0: 11501, 1: 3379}
+2025-09-17 14:49:31,353 - INFO - Loaded 14880 samples from datasets/cyberbullying/twitter_sexism_parsed_dataset.csv
+2025-09-17 14:49:31,353 - INFO - Loading dataset: datasets/cyberbullying/youtube_parsed_dataset.csv
+2025-09-17 14:49:31,401 - INFO - Dataset youtube_parsed_dataset.csv columns: ['index', 'UserIndex', 'Text', 'Number of Comments', 'Number of Subscribers', 'Membership Duration', 'Number of Uploads', 'Profanity in UserID', 'Age', 'oh_label']
+2025-09-17 14:49:31,402 - INFO - Dataset shape: (3464, 10)
+2025-09-17 14:49:31,406 - INFO - Processed youtube_parsed_dataset.csv: 3464 samples, labels: {0: 3047, 1: 417}
+2025-09-17 14:49:31,407 - INFO - Loaded 3464 samples from datasets/cyberbullying/youtube_parsed_dataset.csv
+2025-09-17 14:49:31,407 - INFO - Loading dataset: datasets/cyberbullying/kaggle_parsed_dataset.csv
+2025-09-17 14:49:31,432 - INFO - Dataset kaggle_parsed_dataset.csv columns: ['index', 'oh_label', 'Date', 'Text']
+2025-09-17 14:49:31,432 - INFO - Dataset shape: (8799, 4)
+2025-09-17 14:49:31,438 - INFO - Processed kaggle_parsed_dataset.csv: 8799 samples, labels: {0: 5993, 1: 2806}
+2025-09-17 14:49:31,438 - INFO - Loaded 8799 samples from datasets/cyberbullying/kaggle_parsed_dataset.csv
+2025-09-17 14:49:54,484 - INFO - Original distribution: {1: 446118, 0: 69284}
+2025-09-17 14:49:54,555 - INFO - AGGRESSIVELY balanced dataset from 515402 to 138568 samples
+2025-09-17 14:49:54,557 - INFO - New distribution: {0: 69284, 1: 69284}
+2025-09-17 14:49:54,587 - INFO - Final dataset size: 138568
+2025-09-17 14:49:54,589 - INFO - Label distribution: [69284 69284]
+2025-09-17 14:49:54,612 - INFO - Dataset Statistics:
+2025-09-17 14:49:54,613 - INFO -   Total samples: 138568
+2025-09-17 14:49:54,623 - INFO -   Positive samples (cyberbullying): 69284
+2025-09-17 14:49:54,635 - INFO -   Negative samples (not cyberbullying): 69284
+2025-09-17 14:49:54,647 - INFO -   Class balance ratio: 0.500
+2025-09-17 14:49:54,668 - INFO - Training model with improved parameters...
+2025-09-17 14:49:54,669 - INFO - This may take several minutes depending on dataset size...
+2025-09-17 14:49:54,717 - INFO - Training cyberbullying detection model with balanced parameters...
+2025-09-17 14:50:07,298 - INFO - Model accuracy: 0.8419
+2025-09-17 14:50:07,310 - INFO - Classification report:
+              precision    recall  f1-score   support
+
+           0       0.82      0.88      0.85     13857
+           1       0.87      0.80      0.84     13857
+
+    accuracy                           0.84     27714
+   macro avg       0.84      0.84      0.84     27714
+weighted avg       0.84      0.84      0.84     27714
+
+2025-09-17 14:50:07,311 - INFO - Precision (reducing false positives): 0.8720
+2025-09-17 14:50:07,312 - INFO - Recall (catching true positives): 0.8014
+2025-09-17 14:50:07,453 - INFO - Model saved to backend/models/cyberbullying/cyberbullying_model.pkl
+2025-09-17 14:50:07,457 - INFO - Training completed!
+2025-09-17 14:50:07,457 - INFO - ========================================
+2025-09-17 14:50:07,460 - INFO - RESULTS:
+2025-09-17 14:50:07,462 - INFO - ========================================
+2025-09-17 14:50:07,462 - INFO - Model accuracy: 0.8419
+2025-09-17 14:50:07,462 - INFO - Precision (reduces false positives): 0.8720
+2025-09-17 14:50:07,464 - INFO - Recall (catches true positives): 0.8014
+2025-09-17 14:50:07,464 - INFO - Confusion Matrix:
+2025-09-17 14:50:07,464 - INFO -   True Negatives:  12227
+2025-09-17 14:50:07,464 - INFO -   False Positives: 1630 (reduced)
+2025-09-17 14:50:07,464 - INFO -   False Negatives: 2752
+2025-09-17 14:50:07,465 - INFO -   True Positives:  11105
+2025-09-17 14:50:07,465 - INFO - 
+Model saved to: backend/models/cyberbullying/
+2025-09-17 14:50:07,466 - INFO - 
+========================================
+2025-09-17 14:50:07,467 - INFO - TESTING MODEL WITH SAMPLE TEXTS
+2025-09-17 14:50:07,467 - INFO - ========================================
+2025-09-17 14:50:08,344 - INFO - Transformer model loaded successfully
+2025-09-17 14:50:08,431 - INFO - Cyberbullying model loaded successfully
+2025-09-17 14:50:08,618 - INFO - 
+Test 1: [PASS] - Positive message
+2025-09-17 14:50:08,619 - INFO -   Text: You're such an amazing person! Keep being awesome!
+2025-09-17 14:50:08,619 - INFO -   Expected: False, Predicted: False
+2025-09-17 14:50:08,619 - INFO -   Confidence: 0.068, Threshold: 0.850
+2025-09-17 14:50:08,619 - INFO -   Severity: none
+2025-09-17 14:50:08,656 - INFO - 
+Test 2: [FAIL] - Personal attack
+2025-09-17 14:50:08,657 - INFO -   Text: You're so ugly and stupid, nobody likes you
+2025-09-17 14:50:08,657 - INFO -   Expected: True, Predicted: False
+2025-09-17 14:50:08,657 - INFO -   Confidence: 0.146, Threshold: 0.850
+2025-09-17 14:50:08,657 - INFO -   Severity: high
+2025-09-17 14:50:08,658 - INFO -   Issues detected: personal_attacks
+2025-09-17 14:50:08,693 - INFO - 
+Test 3: [PASS] - Neutral positive
+2025-09-17 14:50:08,693 - INFO -   Text: Just had a great day at the park with friends
+2025-09-17 14:50:08,694 - INFO -   Expected: False, Predicted: False
+2025-09-17 14:50:08,694 - INFO -   Confidence: 0.353, Threshold: 0.850
+2025-09-17 14:50:08,694 - INFO -   Severity: none
+2025-09-17 14:50:08,731 - INFO - 
+Test 4: [FAIL] - Severe threat
+2025-09-17 14:50:08,731 - INFO -   Text: Kill yourself, you worthless piece of trash
+2025-09-17 14:50:08,732 - INFO -   Expected: True, Predicted: False
+2025-09-17 14:50:08,732 - INFO -   Confidence: 0.239, Threshold: 0.850
+2025-09-17 14:50:08,732 - INFO -   Severity: critical
+2025-09-17 14:50:08,732 - INFO -   Issues detected: threats, personal_attacks
+2025-09-17 14:50:08,770 - INFO - 
+Test 5: [PASS] - Friendly greeting
+2025-09-17 14:50:08,770 - INFO -   Text: Hey, how are you doing today? Hope you're well!
+2025-09-17 14:50:08,770 - INFO -   Expected: False, Predicted: False
+2025-09-17 14:50:08,771 - INFO -   Confidence: 0.282, Threshold: 0.850
+2025-09-17 14:50:08,771 - INFO -   Severity: none
+2025-09-17 14:50:08,806 - INFO - 
+Test 6: [FAIL] - Hate speech
+2025-09-17 14:50:08,807 - INFO -   Text: I hate you so much, go die!
+2025-09-17 14:50:08,807 - INFO -   Expected: True, Predicted: False
+2025-09-17 14:50:08,807 - INFO -   Confidence: 0.194, Threshold: 0.850
+2025-09-17 14:50:08,807 - INFO -   Severity: critical
+2025-09-17 14:50:08,807 - INFO -   Issues detected: threats
+2025-09-17 14:50:08,841 - INFO - 
+Test 7: [PASS] - Casual positive
+2025-09-17 14:50:08,842 - INFO -   Text: Looking forward to the weekend
+2025-09-17 14:50:08,842 - INFO -   Expected: False, Predicted: False
+2025-09-17 14:50:08,842 - INFO -   Confidence: 0.292, Threshold: 0.850
+2025-09-17 14:50:08,842 - INFO -   Severity: none
+2025-09-17 14:50:08,876 - INFO - 
+Test 8: [FAIL] - Harassment
+2025-09-17 14:50:08,877 - INFO -   Text: You fat loser, you should just disappear
+2025-09-17 14:50:08,877 - INFO -   Expected: True, Predicted: False
+2025-09-17 14:50:08,877 - INFO -   Confidence: 0.207, Threshold: 0.850
+2025-09-17 14:50:08,878 - INFO -   Severity: high
+2025-09-17 14:50:08,878 - INFO -   Issues detected: personal_attacks
+2025-09-17 14:50:08,878 - INFO - 
+Test Results: 4/8 correct (50.0%)
+2025-09-17 14:50:08,878 - WARNING - [WARNING] Model performance needs improvement
