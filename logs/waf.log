@@ -1,0 +1,4 @@
+2025-09-05 19:44:32,193 - WAF - WARNING - Security attack detected: IP_BLOCKED from 192.168.1.100
+2025-09-05 19:44:32,193 - WAF - WARNING - Blocked IP 192.168.1.100: Test block
+2025-09-05 19:46:56,231 - WAF - WARNING - Security attack detected: IP_BLOCKED from 192.168.1.100
+2025-09-05 19:46:56,232 - WAF - WARNING - Blocked IP 192.168.1.100: Test block
